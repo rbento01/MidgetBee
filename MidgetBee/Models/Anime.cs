@@ -13,6 +13,8 @@ namespace MidgetBee.Models {
             ListaDeAnimes = new HashSet<Anime>();
             // inicializar a lista de Users dos Animes
             ListaDeUsers = new HashSet<UsersAnimes>();
+            // inicializar a lista de Reviews associados aos Animes
+            ListaDeReviews = new HashSet<Review>();
         }
 
         /// <summary>
@@ -54,7 +56,7 @@ namespace MidgetBee.Models {
         /// <summary>
         /// Possui o Valor do Ano
         /// </summary>
-        public string Ano { get; set; }
+        public string Data { get; set; }
 
         /// <summary>
         /// Possui o Link do Ano
@@ -80,5 +82,10 @@ namespace MidgetBee.Models {
         /// Lista de Users associados aos Animes
         /// </summary>
         public ICollection<UsersAnimes> ListaDeUsers { get; set; }
+
+        /// <summary>
+        /// Lista das Reviews associados aos Animes
+        /// </summary>
+        public ICollection<Review> ListaDeReviews { get; set; }
     }
 }

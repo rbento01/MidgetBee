@@ -31,6 +31,11 @@ namespace MidgetBee.Models {
         public double Rating { get; set; }
 
         /// <summary>
+        /// Possui a Data que foi feita a Review
+        /// </summary>
+        public DateTime Data { get; set; }
+
+        /// <summary>
         /// FK para a Review do User
         /// </summary>
         [ForeignKey(nameof(Users))]  // esta 'anotação' indica que o atributo 'IdUsersFK' está a executar o mesmo que o atributo 'IdUsers',
