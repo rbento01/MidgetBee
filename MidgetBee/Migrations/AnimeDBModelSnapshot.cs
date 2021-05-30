@@ -308,6 +308,7 @@ namespace MidgetBee.Migrations
                         new
                         {
                             IdAnime = 2,
+                            Autor = "Masashi Kishimoto",
                             Categoria = "Adventure, Fantasy, Comedy, Martial Arts",
                             Data = "15 de fevereiro, 2007 até 23 de março, 2017",
                             Estudio = "Studio Pierrot",
@@ -321,6 +322,7 @@ namespace MidgetBee.Migrations
                         new
                         {
                             IdAnime = 3,
+                            Autor = "Masashi Kishimoto",
                             Categoria = "Adventure, Fantasy, Comedy, Martial Arts",
                             Data = "5 de abril até ?",
                             Estudio = "Studio Pierrot",
@@ -334,11 +336,12 @@ namespace MidgetBee.Migrations
                         new
                         {
                             IdAnime = 4,
+                            Autor = "Tite Kubo",
                             Categoria = "Adventure, ‎Supernatural",
                             Data = "5 de outubro, 2004 até 27 de março, 2012",
                             Estudio = "Studio Pierrot",
                             Fotografia = "Bleach.jpg",
-                            Links = "https://www.funimation.com/bleach/",
+                            Links = "https://www.crunchyroll.com/pt-pt/bleach",
                             Nome = "Bleach",
                             QuantEpisodios = "366",
                             Rating = 7.7999999999999998,
@@ -347,6 +350,7 @@ namespace MidgetBee.Migrations
                         new
                         {
                             IdAnime = 5,
+                            Autor = "Eichiro Oda",
                             Categoria = "Adventure, Fantasy, Comedy",
                             Data = "20 outubro, 1999 até ?",
                             Estudio = "Toei Animation",
@@ -360,11 +364,12 @@ namespace MidgetBee.Migrations
                         new
                         {
                             IdAnime = 6,
+                            Autor = "Akira Toriyama",
                             Categoria = "Action, Comedy,Drama,Adventure,Martial Arts,Adventure Fiction",
                             Data = "26 de abril, 1989 até 31 de janeiro, 1996",
                             Estudio = "Toei Animation",
                             Fotografia = "Dragon_Ball_Z",
-                            Links = "https://www.funimation.com/Dragon+Ball+Z/",
+                            Links = "https://www.funimation.com/shows/dragon-ball-z/",
                             Nome = "Dragon Ball Z",
                             QuantEpisodios = "291",
                             Rating = 8.1500000000000004,
@@ -373,11 +378,12 @@ namespace MidgetBee.Migrations
                         new
                         {
                             IdAnime = 7,
+                            Autor = "Akira Toriyama",
                             Categoria = "Action, Comedy,Drama,Adventure,Martial Arts,Adventure Fiction",
                             Data = "5 de julho, 2015 até 25 de março, 2018",
                             Estudio = "Toei Animation",
                             Fotografia = "Dragon_Ball_Super.jpg",
-                            Links = "https://beta.crunchyroll.com/pt-pt/series/GR19V7816/Dragon-Ball-Super",
+                            Links = "https://www.crunchyroll.com/pt-pt/dragon-ball-super",
                             Nome = "Dragon Ball Super",
                             QuantEpisodios = "131",
                             Rating = 7.4000000000000004,
@@ -386,6 +392,7 @@ namespace MidgetBee.Migrations
                         new
                         {
                             IdAnime = 8,
+                            Autor = "Hajime Isayama",
                             Categoria = "Action, Dark Fantasy, Post-Apocalyptic",
                             Data = "7 de abril, 2013 até ?",
                             Estudio = "Wit Studio//MAPPA ",
@@ -399,6 +406,7 @@ namespace MidgetBee.Migrations
                         new
                         {
                             IdAnime = 9,
+                            Autor = "Kōhei Horikoshi",
                             Categoria = "Adventure, Fantasy, Superhero",
                             Data = "3 de abril, 2016 até ?",
                             Estudio = "Bones",
@@ -412,6 +420,7 @@ namespace MidgetBee.Migrations
                         new
                         {
                             IdAnime = 10,
+                            Autor = "Gege Akutami",
                             Categoria = "Adventure Fiction, Supernatural Fiction, Dark Fantasy",
                             Data = "3 de outubro,2020 até ?",
                             Estudio = "MAPPA",
@@ -425,24 +434,26 @@ namespace MidgetBee.Migrations
                         new
                         {
                             IdAnime = 11,
-                            Categoria = "",
-                            Data = "6 de abril, 2019 até ?",
+                            Autor = "Koyoharu Gotouge",
+                            Categoria = "Action, Demons, Historical, Shounen, Supernatural",
+                            Data = "6 de abril de 2019",
                             Estudio = "ufotable",
-                            Fotografia = "",
-                            Links = "",
+                            Fotografia = "Demon_Slayer.jpg",
+                            Links = "https://www.crunchyroll.com/pt-pt/demon-slayer-kimetsu-no-yaiba",
                             Nome = "Demon Slayer",
                             QuantEpisodios = "?",
-                            Rating = 8.5999999999999996,
+                            Rating = 8.5899999999999999,
                             Sinopse = "Ever since the death of his father, the burden of supporting the family has fallen upon Tanjirou Kamado's shoulders. Though living impoverished on a remote mountain, the Kamado family are able to enjoy a relatively peaceful and happy life. One day, Tanjirou decides to go down to the local village to make a little money selling charcoal. On his way back, night falls, forcing Tanjirou to take shelter in the house of a strange man, who warns him of the existence of flesh-eating demons that lurk in the woods at night.When he finally arrives back home the next day, he is met with a horrifying sight—his whole family has been slaughtered. Worse still, the sole survivor is his sister Nezuko, who has been turned into a bloodthirsty demon. Consumed by rage and hatred, Tanjirou swears to avenge his family and stay by his only remaining sibling.Alongside the mysterious group calling themselves the Demon Slayer Corps, Tanjirou will do whatever it takes to slay the demons and protect the remnants of his beloved sister's humanity."
                         },
                         new
                         {
                             IdAnime = 12,
+                            Autor = "Mika Nomura",
                             Categoria = "Psychological Thriller, Science Fiction",
                             Data = "6 de abril, 2011 até 27 de setembro,2018",
                             Estudio = "White Fox",
                             Fotografia = "Steins_Gate.jpg",
-                            Links = "ARRANJAR LINK FUNIMATION",
+                            Links = "https://www.crunchyroll.com/pt-pt/steinsgate",
                             Nome = "Steins;Gate",
                             QuantEpisodios = "47",
                             Rating = 8.8100000000000005,
@@ -451,11 +462,12 @@ namespace MidgetBee.Migrations
                         new
                         {
                             IdAnime = 13,
-                            Categoria = "Redo_of_Healer.jpg",
+                            Autor = "Rui Tsukiyo",
+                            Categoria = "Adventure, Harem, Drama, Magic, Ecchi, Fantasy",
                             Data = "13 de janeiro",
                             Estudio = "TNK",
-                            Fotografia = "",
-                            Links = "NÃO DISPONIVEL",
+                            Fotografia = "Redo_of_Healer.jpg",
+                            Links = "https://9anime.to/watch/redo-of-healer.8rvv",
                             Nome = "Redo of Healer",
                             QuantEpisodios = "12",
                             Rating = 6.3099999999999996,
@@ -464,11 +476,12 @@ namespace MidgetBee.Migrations
                         new
                         {
                             IdAnime = 14,
+                            Autor = "Tsugumi Ohba",
                             Categoria = "Mystery, Suspense, Psychological Suspense",
                             Data = "4 de outubro,2006 até 27 de junho, 2007",
                             Estudio = "Madhouse",
                             Fotografia = "Death_Note.jpg",
-                            Links = "ARRANJAR LINK",
+                            Links = "https://www.crunchyroll.com/pt-pt/death-note-drama",
                             Nome = "Death Note",
                             QuantEpisodios = "37",
                             Rating = 8.6300000000000008,
@@ -477,6 +490,7 @@ namespace MidgetBee.Migrations
                         new
                         {
                             IdAnime = 15,
+                            Autor = "Yoshihiro Togashi",
                             Categoria = "Adventure Fiction, Martial Arts, Fantasy",
                             Data = "2 de outubro, 2011 até 24 de setembro, 2014",
                             Estudio = "Nippon Animation",
@@ -490,11 +504,12 @@ namespace MidgetBee.Migrations
                         new
                         {
                             IdAnime = 16,
+                            Autor = "Nakaba Suzuki",
                             Categoria = "Adventure Fiction",
                             Data = "10 de outubro, 2012 até ?",
-                            Estudio = "",
+                            Estudio = "A-1 Pictures",
                             Fotografia = "Seven_Deadly_Sins.jpg",
-                            Links = "AINDA NÃO DISPONIVEL",
+                            Links = "https://www.funimation.com/shows/the-seven-deadly-sins/?qid=None",
                             Nome = "Seven Deadly Sins",
                             QuantEpisodios = "?",
                             Rating = 7.1799999999999997,
@@ -503,11 +518,12 @@ namespace MidgetBee.Migrations
                         new
                         {
                             IdAnime = 17,
+                            Autor = "Haruichi Furudate",
                             Categoria = "Comedy, Sports",
                             Data = "6 de abril 2014 até ?",
                             Estudio = "Production I.G",
                             Fotografia = "Haikyuu.png",
-                            Links = "NÃO DISPONIVEL",
+                            Links = "https://www.crunchyroll.com/pt-pt/haikyu",
                             Nome = "Haikyuu!!",
                             QuantEpisodios = "?",
                             Rating = 8.5299999999999994,
@@ -516,11 +532,12 @@ namespace MidgetBee.Migrations
                         new
                         {
                             IdAnime = 18,
+                            Autor = "Gorō Taniguchi",
                             Categoria = "Action, Mecha, Adventure, Suspense, Military Fiction",
                             Data = "6 de outubro, 2006 até 28 de setembro, 2008",
                             Estudio = "Sunrise",
                             Fotografia = "Code_Geass.jpg",
-                            Links = "NÃO DISPONIVEL",
+                            Links = "https://www.crunchyroll.com/pt-pt/code-geass",
                             Nome = "Code Geass",
                             QuantEpisodios = "50",
                             Rating = 8.8100000000000005,
@@ -529,6 +546,7 @@ namespace MidgetBee.Migrations
                         new
                         {
                             IdAnime = 19,
+                            Autor = "Hiro Mashima",
                             Categoria = "Fantasy, Adventure Fiction",
                             Data = "12 de outubro, 2009 até 29 de setembro, 2019",
                             Estudio = "Satelight//A-1 Pictures",
@@ -542,6 +560,7 @@ namespace MidgetBee.Migrations
                         new
                         {
                             IdAnime = 20,
+                            Autor = "Yuki Tabata",
                             Categoria = "Adventure, Fantasy, Comedy, Action",
                             Data = "3 de outubro,2017 até ?",
                             Estudio = "Studio Pierrot",
@@ -555,6 +574,7 @@ namespace MidgetBee.Migrations
                         new
                         {
                             IdAnime = 21,
+                            Autor = "Boichi",
                             Categoria = "Adventure, Post-Apocalyptic, Science Fiction, Comedy",
                             Data = "5 de julho, 2019 até ?",
                             Estudio = "TMS Entertainment",
@@ -568,11 +588,12 @@ namespace MidgetBee.Migrations
                         new
                         {
                             IdAnime = 22,
+                            Autor = "Junichi Masuda",
                             Categoria = "Adventure, Comedy, Drama, Action, Science Fiction, Suspense",
                             Data = "1 de abril 1997 até 14 de novembro de 2002",
                             Estudio = "OLM",
                             Fotografia = "Pokemon.jpg",
-                            Links = "AINDA NÃO DISPONIVEL",
+                            Links = "https://www.crunchyroll.com/pt-pt/library/Pokemon",
                             Nome = "Pokémon",
                             QuantEpisodios = "276",
                             Rating = 7.3399999999999999,
@@ -581,6 +602,7 @@ namespace MidgetBee.Migrations
                         new
                         {
                             IdAnime = 23,
+                            Autor = "Negi Haruba",
                             Categoria = "Harem, Romantic Comedy",
                             Data = "8 de janeiro, 2021 até ?",
                             Estudio = "Bibury Animation Studios",
@@ -594,11 +616,12 @@ namespace MidgetBee.Migrations
                         new
                         {
                             IdAnime = 24,
+                            Autor = "Code:000",
                             Categoria = "Romance, Science Fiction, Mecha",
                             Data = "13 de janeiro, 2018 até 7 de julho, 2018",
-                            Estudio = "A-1 Pictures//Trigger//CloverWorks",
+                            Estudio = "A -1 Pictures//Trigger//CloverWorks",
                             Fotografia = "Darling_Franxx.jpg",
-                            Links = "https://beta.crunchyroll.com/pt-pt/series/GY8VEQ95Y/DARLING-in-the-FRANXX",
+                            Links = "https://crunchyroll.com/pt-pt/series/GY8VEQ95Y/DARLING-in-the-FRANXX",
                             Nome = "Darling In The FranXX",
                             QuantEpisodios = "24",
                             Rating = 7.3099999999999996,
@@ -607,15 +630,86 @@ namespace MidgetBee.Migrations
                         new
                         {
                             IdAnime = 25,
+                            Autor = "Sui Ishida",
                             Categoria = "Dark Fantasy, Suspense, Horror, Thriller, Gore, Supernatural, Action",
                             Data = "4 de julho, 2014 até 19 de junho, 2018",
                             Estudio = "Studio Pierrot",
                             Fotografia = "Tokyo_Ghoul.jpg",
-                            Links = "Ainda não disponivel",
+                            Links = "https://www.crunchyroll.com/pt-pt/tokyo-ghoul",
                             Nome = "Tokyo Ghoul",
                             QuantEpisodios = "48",
                             Rating = 7.0999999999999996,
                             Sinopse = "Tokyo has become a cruel and merciless city—a place where vicious creatures called 'ghouls' exist alongside humans. The citizens of this once great metropolis live in constant fear of these bloodthirsty savages and their thirst for human flesh. However, the greatest threat these ghouls pose is their dangerous ability to masquerade as humans and blend in with society. Based on the best - selling supernatural horror manga by Sui Ishida, Tokyo Ghoul follows Ken Kaneki, a shy, bookish college student, who is instantly drawn to Rize Kamishiro, an avid reader like himself.However, Rize is not exactly who she seems, and this unfortunate meeting pushes Kaneki into the dark depths of the ghouls' inhuman world. In a twist of fate, Kaneki is saved by the enigmatic waitress Touka Kirishima, and thus begins his new, secret life as a half-ghoul/half-human who must find a way to integrate into both societies."
+                        },
+                        new
+                        {
+                            IdAnime = 26,
+                            Autor = "Sango Harukawa",
+                            Categoria = "Action, Adventure, Fantasy",
+                            Data = "7 de abril de 2016 até 8 de agosto, 2020",
+                            Estudio = "Bones",
+                            Fotografia = "BSD.png",
+                            Links = "https://www.crunchyroll.com/pt-pt/bungo-stray-dogs",
+                            Nome = "Bungou Stray Dogs",
+                            QuantEpisodios = "49",
+                            Rating = 7.7999999999999998,
+                            Sinopse = "For weeks, Atsushi Nakajima's orphanage has been plagued by a mystical tiger that only he seems to be aware of. Suspected to be behind the strange incidents, the 18-year-old is abruptly kicked out of the orphanage and left hungry, homeless, and wandering through the city. While starving on a riverbank, Atsushi saves a rather eccentric man named Osamu Dazai from drowning.Whimsical suicide enthusiast and supernatural detective, Dazai has been investigating the same tiger that has been terrorizing the boy.Together with Dazai's partner Doppo Kunikida, they solve the mystery, but its resolution leaves Atsushi in a tight spot. As various odd events take place, Atsushi is coerced into joining their firm of supernatural investigators, taking on unusual cases the police cannot handle, alongside his numerous enigmatic co-workers.v"
+                        },
+                        new
+                        {
+                            IdAnime = 27,
+                            Autor = "Hiromu Arakawa",
+                            Categoria = "Action, Military, Adventure, Comedy, Drama, Magic, Fantasy, Shounen",
+                            Data = "5 de abril, 2009 até 4 de julho, 2010",
+                            Estudio = "Bones",
+                            Fotografia = "FMA.jpg",
+                            Links = "https://www.crunchyroll.com/pt-pt/fullmetal-alchemist-brotherhood",
+                            Nome = "Fullmetal Alchimist Brotherhood",
+                            QuantEpisodios = "64",
+                            Rating = 9.1699999999999999,
+                            Sinopse = "Alchemy is bound by this Law of Equivalent Exchange—something the young brothers Edward and Alphonse Elric only realize after attempting human transmutation: the one forbidden act of alchemy. They pay a terrible price for their transgression—Edward loses his left leg, Alphonse his physical body. It is only by the desperate sacrifice of Edward's right arm that he is able to affix Alphonse's soul to a suit of armor. Devastated and alone, it is the hope that they would both eventually return to their original bodies that gives Edward the inspiration to obtain metal limbs called 'automail' and become a state alchemist, the Fullmetal Alchemist. Three years of searching later, the brothers seek the Philosopher's Stone, a mythical relic that allows an alchemist to overcome the Law of Equivalent Exchange. Even with military allies Colonel Roy Mustang, Lieutenant Riza Hawkeye, and Lieutenant Colonel Maes Hughes on their side, the brothers find themselves caught up in a nationwide conspiracy that leads them not only to the true nature of the elusive Philosopher's Stone, but their country's murky history as well. In between finding a serial killer and racing against time, Edward and Alphonse must ask themselves if what they are doing will make them human again... or take away their humanity."
+                        },
+                        new
+                        {
+                            IdAnime = 28,
+                            Autor = "Yuu Kamiya",
+                            Categoria = "Game, Adventure, Comedy, Supernatural, Ecchi, Fantasy",
+                            Data = "9 de abril, 2014 até 25 de junho 2014",
+                            Estudio = "Madhouse",
+                            Fotografia = "NGNL.png",
+                            Links = "https://www.crunchyroll.com/pt-pt/no-game-no-life",
+                            Nome = "No Game No Life",
+                            QuantEpisodios = "12",
+                            Rating = 8.1600000000000001,
+                            Sinopse = "No Game No Life is a surreal comedy that follows Sora and Shiro, shut-in NEET siblings and the online gamer duo behind the legendary username 'Blank.' They view the real world as just another lousy game; however, a strange e-mail challenging them to a chess match changes everything—the brother and sister are plunged into an otherworldly realm where they meet Tet, the God of Games. The mysterious god welcomes Sora and Shiro to Disboard, a world where all forms of conflict—from petty squabbles to the fate of whole countries—are settled not through war, but by way of high - stake games.This system works thanks to a fundamental rule wherein each party must wager something they deem to be of equal value to the other party's wager. In this strange land where the very idea of humanity is reduced to child's play, the indifferent genius gamer duo of Sora and Shiro have finally found a real reason to keep playing games: to unite the sixteen races of Disboard, defeat Tet, and become the gods of this new, gaming -is -everything world."
+                        },
+                        new
+                        {
+                            IdAnime = 29,
+                            Autor = "Makoto Yukimura",
+                            Categoria = "Action, Adventure, Drama, Historical, Seinen",
+                            Data = "8 de julho, 2019 até ?",
+                            Estudio = "Wit Studio",
+                            Fotografia = "VinSaga.jpg",
+                            Links = "https://9anime.to/watch/vinland-saga.77zy",
+                            Nome = "Vinland Saga",
+                            QuantEpisodios = "24",
+                            Rating = 8.7100000000000009,
+                            Sinopse = "Young Thorfinn grew up listening to the stories of old sailors that had traveled the ocean and reached the place of legend, Vinland. It's said to be warm and fertile, a place where there would be no need for fighting—not at all like the frozen village in Iceland where he was born, and certainly not like his current life as a mercenary. War is his home now. Though his father once told him, 'You have no enemies, nobody does.There is nobody who it's okay to hurt,' as he grew, Thorfinn knew that nothing was further from the truth. The war between England and the Danes grows worse with each passing year.Death has become commonplace, and the viking mercenaries are loving every moment of it.Allying with either side will cause a massive swing in the balance of power, and the vikings are happy to make names for themselves and take any spoils they earn along the way.Among the chaos, Thorfinn must take his revenge and kill Askeladd, the man who murdered his father.The only paradise for the vikings, it seems, is the era of war and death that rages on."
+                        },
+                        new
+                        {
+                            IdAnime = 30,
+                            Autor = "Yuto Tsukuda",
+                            Categoria = "Ecchi, School, Shounen",
+                            Data = "4 de abril de 2015 até 26 de setembro, 2020",
+                            Estudio = "J.C.Staff",
+                            Fotografia = "FoodWars.jpg",
+                            Links = "https://www.crunchyroll.com/pt-pt/food-wars-shokugeki-no-soma",
+                            Nome = "Shokugeki No Souma",
+                            QuantEpisodios = "73",
+                            Rating = 8.2400000000000002,
+                            Sinopse = "Ever since he was a child, fifteen-year-old Souma Yukihira has helped his father by working as the sous chef in the restaurant his father runs and owns. Throughout the years, Souma developed a passion for entertaining his customers with his creative, skilled, and daring culinary creations. His dream is to someday own his family's restaurant as its head chef. Yet when his father suddenly decides to close the restaurant to test his cooking abilities in restaurants around the world, he sends Souma to Tootsuki Culinary Academy, an elite cooking school where only 10 percent of the students graduate.The institution is famous for its 'Shokugeki' or 'food wars,' where students face off in intense, high - stakes cooking showdowns. As Souma and his new schoolmates struggle to survive the extreme lifestyle of Tootsuki, more and greater challenges await him, putting his years of learning under his father to the test."
                         });
                 });
 
