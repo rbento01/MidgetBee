@@ -6,15 +6,18 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace MidgetBee.Models {
-    public class Anime {
+    /// <summary>
+    /// série de diversão, efetuada com 'desenho animados'
+    /// </summary>
+    public class Animes {
 
-        public Anime() {
-            // inicializar a lista de Animes
-            ListaDeAnimes = new HashSet<Anime>();
+        public Animes() {
+            //// inicializar a lista de Episódios
+            ListaDeEpisodios = new HashSet<Episodios>();
             // inicializar a lista de Users dos Animes
-            ListaDeUsers = new HashSet<UsersAnimes>();
+            ListaDeUsers = new HashSet<Utilizadores>();
             // inicializar a lista de Reviews associados aos Animes
-            ListaDeReviews = new HashSet<Review>();
+            ListaDeReviews = new HashSet<Reviews>();
         }
 
         /// <summary>
@@ -74,18 +77,18 @@ namespace MidgetBee.Models {
         public string Categoria { get; set; }
 
         /// <summary>
-        /// Lista dos Animes
+        /// Lista dos Episódios do Anime
         /// </summary>
-        public ICollection<Anime> ListaDeAnimes { get; set; }
+        public ICollection<Episodios> ListaDeEpisodios { get; set; }
 
         /// <summary>
         /// Lista de Users associados aos Animes
         /// </summary>
-        public ICollection<UsersAnimes> ListaDeUsers { get; set; }
+        public ICollection<Utilizadores> ListaDeUsers { get; set; }
 
         /// <summary>
         /// Lista das Reviews associados aos Animes
         /// </summary>
-        public ICollection<Review> ListaDeReviews { get; set; }
+        public ICollection<Reviews> ListaDeReviews { get; set; }
     }
 }
