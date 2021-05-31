@@ -44,7 +44,7 @@ namespace MidgetBee.Models {
         /// FK para a Review do User
         /// </summary>
         [ForeignKey(nameof(Utilizador))]  // esta 'anotação' indica que o atributo 'IdUsersFK' está a executar o mesmo que o atributo 'IdUsers',
-                                     // e que representa uma FK para a classe Review
+                                          // e que representa uma FK para a classe Review
         public int UsersFK { get; set; }   // atributo para ser usado no SGBD e no C#. Representa a FK para a Review do User
         public Utilizadores Utilizador { get; set; }   // atributo para ser usado no C#. Representa a FK para a Review do User
 

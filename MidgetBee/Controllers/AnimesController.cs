@@ -8,35 +8,28 @@ using Microsoft.EntityFrameworkCore;
 using MidgetBee.Data;
 using MidgetBee.Models;
 
-namespace MidgetBee.Controllers
-{
-    public class AnimesController : Controller
-    {
+namespace MidgetBee.Controllers {
+    public class AnimesController : Controller {
         private readonly AnimeDB _context;
 
-        public AnimesController(AnimeDB context)
-        {
+        public AnimesController(AnimeDB context) {
             _context = context;
         }
 
         // GET: Animes
-        public async Task<IActionResult> Index()
-        {
+        public async Task<IActionResult> Index() {
             return View(await _context.Animes.ToListAsync());
         }
 
         // GET: Animes/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
+        public async Task<IActionResult> Details(int? id) {
+            if (id == null) {
                 return NotFound();
             }
 
             var animes = await _context.Animes
                 .FirstOrDefaultAsync(m => m.IdAnime == id);
-            if (animes == null)
-            {
+            if (animes == null) {
                 return NotFound();
             }
 
@@ -44,8 +37,7 @@ namespace MidgetBee.Controllers
         }
 
         // GET: Animes/Create
-        public IActionResult Create()
-        {
+        public IActionResult Create() {
             return View();
         }
 
@@ -54,10 +46,8 @@ namespace MidgetBee.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdAnime,Nome,QuantEpisodios,Rating,Sinopse,Autor,Estudio,Data,Links,Fotografia,Categoria")] Animes animes)
-        {
-            if (ModelState.IsValid)
-            {
+        public async Task<IActionResult> Create([Bind("IdAnime,Nome,QuantEpisodios,Rating,Sinopse,Autor,Estudio,Data,Links,Fotografia,Categoria")] Animes animes) {
+            if (ModelState.IsValid) {
                 _context.Add(animes);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -66,16 +56,13 @@ namespace MidgetBee.Controllers
         }
 
         // GET: Animes/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
+        public async Task<IActionResult> Edit(int? id) {
+            if (id == null) {
                 return NotFound();
             }
 
             var animes = await _context.Animes.FindAsync(id);
-            if (animes == null)
-            {
+            if (animes == null) {
                 return NotFound();
             }
             return View(animes);
@@ -86,28 +73,19 @@ namespace MidgetBee.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdAnime,Nome,QuantEpisodios,Rating,Sinopse,Autor,Estudio,Data,Links,Fotografia,Categoria")] Animes animes)
-        {
-            if (id != animes.IdAnime)
-            {
+        public async Task<IActionResult> Edit(int id, [Bind("IdAnime,Nome,QuantEpisodios,Rating,Sinopse,Autor,Estudio,Data,Links,Fotografia,Categoria")] Animes animes) {
+            if (id != animes.IdAnime) {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
+            if (ModelState.IsValid) {
+                try {
                     _context.Update(animes);
                     await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!AnimesExists(animes.IdAnime))
-                    {
+                } catch (DbUpdateConcurrencyException) {
+                    if (!AnimesExists(animes.IdAnime)) {
                         return NotFound();
-                    }
-                    else
-                    {
+                    } else {
                         throw;
                     }
                 }
@@ -117,17 +95,14 @@ namespace MidgetBee.Controllers
         }
 
         // GET: Animes/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
+        public async Task<IActionResult> Delete(int? id) {
+            if (id == null) {
                 return NotFound();
             }
 
             var animes = await _context.Animes
                 .FirstOrDefaultAsync(m => m.IdAnime == id);
-            if (animes == null)
-            {
+            if (animes == null) {
                 return NotFound();
             }
 
@@ -137,16 +112,14 @@ namespace MidgetBee.Controllers
         // POST: Animes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
+        public async Task<IActionResult> DeleteConfirmed(int id) {
             var animes = await _context.Animes.FindAsync(id);
             _context.Animes.Remove(animes);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool AnimesExists(int id)
-        {
+        private bool AnimesExists(int id) {
             return _context.Animes.Any(e => e.IdAnime == id);
         }
     }
