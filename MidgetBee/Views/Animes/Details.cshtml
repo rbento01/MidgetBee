@@ -7,28 +7,24 @@
 <h1>Details</h1>
 
 <div>
-    <h4>Filmes</h4>
+    <h4>Animes</h4>
     <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Nome)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Nome)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.QuantEpisodios)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.QuantEpisodios)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Sinopse)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Sinopse)
-        </dd>
-    </dl>
+    <div style="float:left; margin-right:20px;">
+        <img src="~/fotos/@Html.DisplayFor(model => model.Fotografia)" width="200" alt="Fotografia do @Html.DisplayFor(model => model.Nome)" title="@Html.DisplayFor(model => model.Nome)" />
+    </div>
+    <div style="line-height:2;"> 
+        <b>Nome: </b> @Html.DisplayFor(model => model.Nome)<br />
+        <b>Episódios: </b> @Html.DisplayFor(model => model.QuantEpisodios)<br />
+        <b>Rating: </b> @Html.DisplayFor(model => model.Rating)<br />
+        <b>Autor: </b> @Html.DisplayFor(model => model.Autor)<br />
+        <b>Estúdio: </b> @Html.DisplayFor(model => model.Estudio)<br />
+        <b>Periodo de Lançamento: </b> @Html.DisplayFor(model => model.Data)<br />
+        <a style="font-weight:bold" href="@Html.DisplayFor(model => model.Links)"><b> Site para a Visualização</b></a><br />
+        <b>Categorias: </b> @Html.DisplayFor(model => model.Categoria)<br /><br /><br />
+    </div>
+    <div>
+        <b>Sinopse:</b> @Html.DisplayFor(model => model.Sinopse)
+    </div>
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model.IdAnime">Edit</a> |
