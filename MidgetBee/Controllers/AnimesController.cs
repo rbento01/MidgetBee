@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MidgetBee.Data;
 using MidgetBee.Models;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace MidgetBee.Controllers {
     public class AnimesController : Controller {

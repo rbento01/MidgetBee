@@ -10,7 +10,7 @@ using MidgetBee.Data;
 namespace MidgetBee.Migrations
 {
     [DbContext(typeof(AnimeDB))]
-    [Migration("20210531233547_Autenticacao")]
+    [Migration("20210601001027_Autenticacao")]
     partial class Autenticacao
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -342,7 +342,7 @@ namespace MidgetBee.Migrations
                             Categoria = "Adventure, ‎Supernatural",
                             Data = "5 de outubro, 2004 até 27 de março, 2012",
                             Estudio = "Studio Pierrot",
-                            Fotografia = "Bleach.jpg",
+                            Fotografia = "bleach.jpg",
                             Links = "https://www.crunchyroll.com/pt-pt/bleach",
                             Nome = "Bleach",
                             QuantEpisodios = "366",
@@ -496,7 +496,7 @@ namespace MidgetBee.Migrations
                             Categoria = "Adventure Fiction, Martial Arts, Fantasy",
                             Data = "2 de outubro, 2011 até 24 de setembro, 2014",
                             Estudio = "Nippon Animation",
-                            Fotografia = "Hunter_x_Hunter.jpg",
+                            Fotografia = "hunter_x_hunter.jpg",
                             Links = "https://beta.crunchyroll.com/pt-pt/series/GY3VKX1MR/Hunter-x-Hunter",
                             Nome = "Hunter x Hunter",
                             QuantEpisodios = "148",
@@ -510,7 +510,7 @@ namespace MidgetBee.Migrations
                             Categoria = "Adventure Fiction",
                             Data = "10 de outubro, 2012 até ?",
                             Estudio = "A-1 Pictures",
-                            Fotografia = "Seven_Deadly_Sins.jpg",
+                            Fotografia = "seven_deadly_sins.jpg",
                             Links = "https://www.funimation.com/shows/the-seven-deadly-sins/?qid=None",
                             Nome = "Seven Deadly Sins",
                             QuantEpisodios = "?",
@@ -552,7 +552,7 @@ namespace MidgetBee.Migrations
                             Categoria = "Fantasy, Adventure Fiction",
                             Data = "12 de outubro, 2009 até 29 de setembro, 2019",
                             Estudio = "Satelight//A-1 Pictures",
-                            Fotografia = "Fairy_Tail.jpg",
+                            Fotografia = "fairy_tail.jpg",
                             Links = "https://beta.crunchyroll.com/pt-pt/series/G6DQDD3WR/Fairy-Tail",
                             Nome = "Fairy Tail",
                             QuantEpisodios = "328",
@@ -594,7 +594,7 @@ namespace MidgetBee.Migrations
                             Categoria = "Adventure, Comedy, Drama, Action, Science Fiction, Suspense",
                             Data = "1 de abril 1997 até 14 de novembro de 2002",
                             Estudio = "OLM",
-                            Fotografia = "Pokemon.jpg",
+                            Fotografia = "pokemon.jpg",
                             Links = "https://www.crunchyroll.com/pt-pt/library/Pokemon",
                             Nome = "Pokémon",
                             QuantEpisodios = "276",
@@ -664,7 +664,7 @@ namespace MidgetBee.Migrations
                             Categoria = "Action, Military, Adventure, Comedy, Drama, Magic, Fantasy, Shounen",
                             Data = "5 de abril, 2009 até 4 de julho, 2010",
                             Estudio = "Bones",
-                            Fotografia = "FMA.jpg",
+                            Fotografia = "fma.jpg",
                             Links = "https://www.crunchyroll.com/pt-pt/fullmetal-alchemist-brotherhood",
                             Nome = "Fullmetal Alchimist Brotherhood",
                             QuantEpisodios = "64",
@@ -692,7 +692,7 @@ namespace MidgetBee.Migrations
                             Categoria = "Action, Adventure, Drama, Historical, Seinen",
                             Data = "8 de julho, 2019 até ?",
                             Estudio = "Wit Studio",
-                            Fotografia = "VinSaga.jpg",
+                            Fotografia = "vinsaga.jpg",
                             Links = "https://9anime.to/watch/vinland-saga.77zy",
                             Nome = "Vinland Saga",
                             QuantEpisodios = "24",
