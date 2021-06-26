@@ -8,10 +8,6 @@ namespace MidgetBee.Models {
     public class Animes {
 
         public Animes() {
-            //// inicializar a lista de Episódios
-            ListaDeEpisodios = new HashSet<Episodios>();
-            // inicializar a lista de Users dos Animes
-            ListaDeUsers = new HashSet<Utilizadores>();
             // inicializar a lista de Reviews associados aos Animes
             ListaDeReviews = new HashSet<Reviews>();
         }
@@ -71,16 +67,6 @@ namespace MidgetBee.Models {
         /// Possui a Categoria do Anime
         /// </summary>
         public string Categoria { get; set; }
-
-        /// <summary>
-        /// Lista dos Episódios do Anime
-        /// </summary>
-        public ICollection<Episodios> ListaDeEpisodios { get; set; }
-
-        /// <summary>
-        /// Lista de Users associados aos Animes
-        /// </summary>
-        public ICollection<Utilizadores> ListaDeUsers { get; set; }
 
         /// <summary>
         /// Lista das Reviews associados aos Animes

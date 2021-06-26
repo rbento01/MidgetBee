@@ -20,10 +20,13 @@ namespace MidgetBee {
             services.AddDbContext<AnimeDB>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
+
             services.AddDatabaseDeveloperPageExceptionFilter();
 
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<AnimeDB>();
+            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
+                    .AddRoles<IdentityRole>()
+                    .AddEntityFrameworkStores<AnimeDB>();
+
             services.AddControllersWithViews();
         }
 

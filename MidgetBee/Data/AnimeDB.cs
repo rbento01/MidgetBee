@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using MidgetBee.Models;
 
@@ -11,6 +12,13 @@ namespace MidgetBee.Data {
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
 
             base.OnModelCreating(modelBuilder);
+
+            // adicionar os Roles
+            modelBuilder.Entity<IdentityRole>().HasData(
+               new IdentityRole { Id = "c", Name = "Cliente", NormalizedName = "CLIENTE" },
+               new IdentityRole { Id = "a", Name = "Admin", NormalizedName = "ADMIN" }
+            );
+
 
             modelBuilder.Entity<Animes>().HasData(
                 new Animes { IdAnime = 1, Nome = "Naruto", QuantEpisodios = "220", Rating = 7.92, Sinopse = "Moments prior to Naruto Uzumaki's birth, a huge demon known as the Kyuubi, the Nine-Tailed Fox, attacked Konohagakure, the Hidden Leaf Village, and wreaked havoc. In order to put an end to the Kyuubi's rampage, the leader of the village, the Fourth Hokage, sacrificed his life and sealed the monstrous beast inside the newborn Naruto. Now, Naruto is a hyperactive and knuckle-headed ninja still living in Konohagakure. Shunned because of the Kyuubi inside him, Naruto struggles to find his place in the village, while his burning desire to become the Hokage of Konohagakure leads him not only to some great new friends, but also some deadly foes.", Autor = "Masashi Kishimoto", Estudio = "Studio Pierrot", Data = "3 de outubro, 2002 até 8 de fevereiro, 2007", Links = "https://beta.crunchyroll.com/pt-pt/series/GY9PJ5KWR/Naruto", Fotografia = "Naruto.jpg", Categoria = "Adventure, Fantasy, Comedy, Martial Arts" },
@@ -97,7 +105,6 @@ namespace MidgetBee.Data {
         }
         //Representar as Tabelas da BD
         public DbSet<Animes> Animes { get; set; }
-        public DbSet<Episodios> Episodios { get; set; }
         public DbSet<Utilizadores> Utilizadores { get; set; }
         public DbSet<Reviews> Reviews { get; set; }
 

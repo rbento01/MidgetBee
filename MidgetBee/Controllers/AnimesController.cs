@@ -1,7 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MidgetBee.Data;
 using MidgetBee.Models;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -9,12 +12,19 @@ namespace MidgetBee.Controllers {
     public class AnimesController : Controller {
         private readonly AnimeDB _context;
 
-        public AnimesController(AnimeDB context) {
+        /// <summary>
+        /// objeto para gerir os dados dos Utilizadores registados
+        /// </summary>
+        private readonly UserManager<IdentityUser> _userManager;
+
+        public AnimesController(AnimeDB context, UserManager<IdentityUser> userManager) {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: Animes
         public async Task<IActionResult> Index() {
+            
             return View(await _context.Animes.ToListAsync());
         }
 
@@ -24,13 +34,39 @@ namespace MidgetBee.Controllers {
                 return NotFound();
             }
 
-            var animes = await _context.Animes
-                .FirstOrDefaultAsync(m => m.IdAnime == id);
-            if (animes == null) {
+            var anime = await _context.Animes
+                                       .Where(a => a.IdAnime == id)
+                                       .Include(a => a.ListaDeReviews)
+                                       .ThenInclude(r => r.Utilizador)
+                                       .OrderByDescending(a => a.Data)
+                                       .FirstOrDefaultAsync();
+            if (anime == null) {
                 return NotFound();
             }
 
-            return View(animes);
+            return View(anime);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize]
+        public async Task<IActionResult> CreateComentario(int animeID, string comentario, int rating) {
+
+            var utilizador = _context.Utilizadores.Where(u => u.UserNameID == _userManager.GetUserId(User)).FirstOrDefault();
+
+            var comment = new Reviews {
+                AnimeFK = animeID,
+                Comentario = comentario.Replace("\r\n", "<br />"),
+                Rating = rating,
+                Data = DateTime.Now,
+                Visibilidade = true,
+                Utilizador = utilizador
+            };
+
+            _context.Reviews.Add(comment);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Details),new { id = animeID});
+
         }
 
         // GET: Animes/Create

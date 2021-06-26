@@ -25,7 +25,7 @@ namespace MidgetBee.Models {
         /// Possui a Rating do Anime
         /// </summary>
         [Required]
-        public double Rating { get; set; }
+        public int Rating { get; set; }
 
         /// <summary>
         /// Possui a Data que foi feita a Review

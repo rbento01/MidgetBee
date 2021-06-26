@@ -3,21 +3,53 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MidgetBee.Data;
 
 namespace MidgetBee.Migrations
 {
     [DbContext(typeof(AnimeDB))]
-    partial class AnimeDBModelSnapshot : ModelSnapshot
+    [Migration("20210626143540_Roles")]
+    partial class Roles
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.6")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("AnimesUtilizadores", b =>
+                {
+                    b.Property<int>("ListaDeAnimesIdAnime")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ListaDeUsersIdUsers")
+                        .HasColumnType("int");
+
+                    b.HasKey("ListaDeAnimesIdAnime", "ListaDeUsersIdUsers");
+
+                    b.HasIndex("ListaDeUsersIdUsers");
+
+                    b.ToTable("AnimesUtilizadores");
+                });
+
+            modelBuilder.Entity("EpisodiosUtilizadores", b =>
+                {
+                    b.Property<int>("ListaDeEpisodiosNumEpisodio")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ListaDeUsersIdUsers")
+                        .HasColumnType("int");
+
+                    b.HasKey("ListaDeEpisodiosNumEpisodio", "ListaDeUsersIdUsers");
+
+                    b.HasIndex("ListaDeUsersIdUsers");
+
+                    b.ToTable("EpisodiosUtilizadores");
+                });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
@@ -49,14 +81,14 @@ namespace MidgetBee.Migrations
                         new
                         {
                             Id = "c",
-                            ConcurrencyStamp = "722cce40-9e2c-405a-9668-6507d8e39281",
+                            ConcurrencyStamp = "16e8ec0d-709c-4634-80c7-48030c1237e3",
                             Name = "Cliente",
                             NormalizedName = "CLIENTE"
                         },
                         new
                         {
                             Id = "a",
-                            ConcurrencyStamp = "d3b18522-6d59-44f5-83fb-e03da839bdcd",
+                            ConcurrencyStamp = "3374fed2-fea8-456d-b5d1-dfab7e4f2bf0",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -699,6 +731,29 @@ namespace MidgetBee.Migrations
                         });
                 });
 
+            modelBuilder.Entity("MidgetBee.Models.Episodios", b =>
+                {
+                    b.Property<int>("NumEpisodio")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("AnimeFK")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Resumo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Titulo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("NumEpisodio");
+
+                    b.HasIndex("AnimeFK");
+
+                    b.ToTable("Episodios");
+                });
+
             modelBuilder.Entity("MidgetBee.Models.Reviews", b =>
                 {
                     b.Property<int>("IdReview")
@@ -752,6 +807,36 @@ namespace MidgetBee.Migrations
                     b.ToTable("Utilizadores");
                 });
 
+            modelBuilder.Entity("AnimesUtilizadores", b =>
+                {
+                    b.HasOne("MidgetBee.Models.Animes", null)
+                        .WithMany()
+                        .HasForeignKey("ListaDeAnimesIdAnime")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MidgetBee.Models.Utilizadores", null)
+                        .WithMany()
+                        .HasForeignKey("ListaDeUsersIdUsers")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("EpisodiosUtilizadores", b =>
+                {
+                    b.HasOne("MidgetBee.Models.Episodios", null)
+                        .WithMany()
+                        .HasForeignKey("ListaDeEpisodiosNumEpisodio")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MidgetBee.Models.Utilizadores", null)
+                        .WithMany()
+                        .HasForeignKey("ListaDeUsersIdUsers")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -803,6 +888,17 @@ namespace MidgetBee.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("MidgetBee.Models.Episodios", b =>
+                {
+                    b.HasOne("MidgetBee.Models.Animes", "Anime")
+                        .WithMany("ListaDeEpisodios")
+                        .HasForeignKey("AnimeFK")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Anime");
+                });
+
             modelBuilder.Entity("MidgetBee.Models.Reviews", b =>
                 {
                     b.HasOne("MidgetBee.Models.Animes", "Anime")
@@ -824,6 +920,8 @@ namespace MidgetBee.Migrations
 
             modelBuilder.Entity("MidgetBee.Models.Animes", b =>
                 {
+                    b.Navigation("ListaDeEpisodios");
+
                     b.Navigation("ListaDeReviews");
                 });
 

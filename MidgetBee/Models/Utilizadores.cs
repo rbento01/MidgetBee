@@ -5,10 +5,6 @@ namespace MidgetBee.Models {
     public class Utilizadores {
 
         public Utilizadores() {
-            // inicializar a lista de Animes do User
-            ListaDeAnimes = new HashSet<Animes>();
-            // inicializar a lista de Episodios
-            ListaDeEpisodios = new HashSet<Episodios>();
             ListaDeReviews = new HashSet<Reviews>();
         }
         /// <summary>
@@ -20,19 +16,14 @@ namespace MidgetBee.Models {
         /// <summary>
         /// Possui o Email do User
         /// </summary>
-        [StringLength(50, ErrorMessage = "O {0} não pode ter mais de {1} caracteres.")]
-        [EmailAddress(ErrorMessage = "o {0} introduzido não é válido")]
+        
+        [Display(Name = "Email")]
         public string Email { get; set; }
 
         /// <summary>
-        /// lista dos Animes associados ao User
+        /// Ligação entre os Utilizadores e a tabela de Autenticação
         /// </summary>
-        public ICollection<Animes> ListaDeAnimes { get; set; }
-
-        /// <summary>
-        /// lista dos Animes associados ao Episodio
-        /// </summary>
-        public ICollection<Episodios> ListaDeEpisodios { get; set; }
+        public string UserNameID { get; set; }
 
         /// <summary>
         /// Lista de Links associados aos Animes
