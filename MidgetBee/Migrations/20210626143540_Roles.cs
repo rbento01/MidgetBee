@@ -1,11 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace MidgetBee.Migrations
-{
-    public partial class Roles : Migration
-    {
-        protected override void Up(MigrationBuilder migrationBuilder)
-        {
+namespace MidgetBee.Migrations {
+    public partial class Roles : Migration {
+        protected override void Up(MigrationBuilder migrationBuilder) {
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
@@ -17,8 +14,7 @@ namespace MidgetBee.Migrations
                 values: new object[] { "a", "3374fed2-fea8-456d-b5d1-dfab7e4f2bf0", "Admin", "ADMIN" });
         }
 
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
+        protected override void Down(MigrationBuilder migrationBuilder) {
             migrationBuilder.DeleteData(
                 table: "AspNetRoles",
                 keyColumn: "Id",

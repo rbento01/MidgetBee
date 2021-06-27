@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MidgetBee.Data;
 using MidgetBee.Models;
@@ -24,7 +25,7 @@ namespace MidgetBee.Controllers {
 
         // GET: Animes
         public async Task<IActionResult> Index() {
-            
+
             return View(await _context.Animes.ToListAsync());
         }
 
@@ -38,7 +39,7 @@ namespace MidgetBee.Controllers {
                                        .Where(a => a.IdAnime == id)
                                        .Include(a => a.ListaDeReviews)
                                        .ThenInclude(r => r.Utilizador)
-                                       .OrderByDescending(a => a.Data)
+                                       .OrderByDescending(r => r.Data)
                                        .FirstOrDefaultAsync();
             if (anime == null) {
                 return NotFound();
@@ -65,7 +66,7 @@ namespace MidgetBee.Controllers {
 
             _context.Reviews.Add(comment);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Details),new { id = animeID});
+            return RedirectToAction(nameof(Details), new { id = animeID });
 
         }
 

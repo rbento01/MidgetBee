@@ -1,11 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace MidgetBee.Migrations
-{
-    public partial class AdicaoUserFK : Migration
-    {
-        protected override void Up(MigrationBuilder migrationBuilder)
-        {
+namespace MidgetBee.Migrations {
+    public partial class AdicaoUserFK : Migration {
+        protected override void Up(MigrationBuilder migrationBuilder) {
             migrationBuilder.AddColumn<string>(
                 name: "UserNameID",
                 table: "Utilizadores",
@@ -21,8 +18,7 @@ namespace MidgetBee.Migrations
                 oldType: "float");
         }
 
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
+        protected override void Down(MigrationBuilder migrationBuilder) {
             migrationBuilder.DropColumn(
                 name: "UserNameID",
                 table: "Utilizadores");

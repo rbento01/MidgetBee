@@ -129,7 +129,7 @@ namespace MidgetBee.Areas.Identity.Pages.Account {
                      ***********************************************************************
                      Preparar os dados do Criador para serem adicionados à BD 
                      **********************************************************************/
-                    
+
                     Utilizadores utilizador = new Utilizadores {
                         Email = user.Email,
                         UserNameID = user.Id
@@ -156,7 +156,7 @@ namespace MidgetBee.Areas.Identity.Pages.Account {
 
                         // já não há nada a fazer,
                         // redirecionar para a página de confirmação de criação de conta
-                        return RedirectToPage("RegisterConfirmation");
+                        return RedirectToPage("Login");
                     } catch (Exception) {
                         // houve um erro na criação de um Criador
                         // Apresenta uma mensagem de erro

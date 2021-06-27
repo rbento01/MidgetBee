@@ -1,11 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace MidgetBee.Migrations
-{
-    public partial class Models_Update : Migration
-    {
-        protected override void Up(MigrationBuilder migrationBuilder)
-        {
+namespace MidgetBee.Migrations {
+    public partial class Models_Update : Migration {
+        protected override void Up(MigrationBuilder migrationBuilder) {
             migrationBuilder.DropTable(
                 name: "AnimesUtilizadores");
 
@@ -30,17 +27,14 @@ namespace MidgetBee.Migrations
                 value: "722cce40-9e2c-405a-9668-6507d8e39281");
         }
 
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
+        protected override void Down(MigrationBuilder migrationBuilder) {
             migrationBuilder.CreateTable(
                 name: "AnimesUtilizadores",
-                columns: table => new
-                {
+                columns: table => new {
                     ListaDeAnimesIdAnime = table.Column<int>(type: "int", nullable: false),
                     ListaDeUsersIdUsers = table.Column<int>(type: "int", nullable: false)
                 },
-                constraints: table =>
-                {
+                constraints: table => {
                     table.PrimaryKey("PK_AnimesUtilizadores", x => new { x.ListaDeAnimesIdAnime, x.ListaDeUsersIdUsers });
                     table.ForeignKey(
                         name: "FK_AnimesUtilizadores_Animes_ListaDeAnimesIdAnime",
@@ -58,16 +52,14 @@ namespace MidgetBee.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Episodios",
-                columns: table => new
-                {
+                columns: table => new {
                     NumEpisodio = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     AnimeFK = table.Column<int>(type: "int", nullable: false),
                     Resumo = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Titulo = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
-                constraints: table =>
-                {
+                constraints: table => {
                     table.PrimaryKey("PK_Episodios", x => x.NumEpisodio);
                     table.ForeignKey(
                         name: "FK_Episodios_Animes_AnimeFK",
@@ -79,13 +71,11 @@ namespace MidgetBee.Migrations
 
             migrationBuilder.CreateTable(
                 name: "EpisodiosUtilizadores",
-                columns: table => new
-                {
+                columns: table => new {
                     ListaDeEpisodiosNumEpisodio = table.Column<int>(type: "int", nullable: false),
                     ListaDeUsersIdUsers = table.Column<int>(type: "int", nullable: false)
                 },
-                constraints: table =>
-                {
+                constraints: table => {
                     table.PrimaryKey("PK_EpisodiosUtilizadores", x => new { x.ListaDeEpisodiosNumEpisodio, x.ListaDeUsersIdUsers });
                     table.ForeignKey(
                         name: "FK_EpisodiosUtilizadores_Episodios_ListaDeEpisodiosNumEpisodio",

@@ -1,11 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace MidgetBee.Migrations
-{
-    public partial class Register : Migration
-    {
-        protected override void Up(MigrationBuilder migrationBuilder)
-        {
+namespace MidgetBee.Migrations {
+    public partial class Register : Migration {
+        protected override void Up(MigrationBuilder migrationBuilder) {
             migrationBuilder.AlterColumn<string>(
                 name: "Email",
                 table: "Utilizadores",
@@ -17,8 +14,7 @@ namespace MidgetBee.Migrations
                 oldNullable: true);
         }
 
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
+        protected override void Down(MigrationBuilder migrationBuilder) {
             migrationBuilder.AlterColumn<string>(
                 name: "Email",
                 table: "Utilizadores",
