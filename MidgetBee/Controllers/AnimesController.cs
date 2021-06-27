@@ -35,9 +35,17 @@ namespace MidgetBee.Controllers {
                 return NotFound();
             }
 
+            /* SQL:
+             * 
+             * SELECT *
+             * FROM Animes.ListaDeReviews ar, Animes a, Reviews r
+             * WHERE a.IdAnime = id
+             * ORDER BY r.Data;
+             */
+
             var anime = await _context.Animes
                                        .Where(a => a.IdAnime == id)
-                                       .Include(a => a.ListaDeReviews)
+                                       .Include(ar => ar.ListaDeReviews)
                                        .ThenInclude(r => r.Utilizador)
                                        .OrderByDescending(r => r.Data)
                                        .FirstOrDefaultAsync();
@@ -48,13 +56,22 @@ namespace MidgetBee.Controllers {
             return View(anime);
         }
 
+        /// <summary>
+        /// Esta função vai-se encarregar de passar o valor da view para o controller
+        /// </summary>
+        /// <param name="animeID"></param> Vai possuir o identificador do Anime
+        /// <param name="comentario"></param> Vai possuir a string que o user inseriu
+        /// <param name="rating"></param> Vai possuir a rating que o user inseriu
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
         public async Task<IActionResult> CreateComentario(int animeID, string comentario, int rating) {
 
+            // esta variável vai ter o valor do username do utilizador
             var utilizador = _context.Utilizadores.Where(u => u.UserNameID == _userManager.GetUserId(User)).FirstOrDefault();
 
+            // objeto do tipo Reviews que vai possuir todos os atributos desse mesmo modelo
             var comment = new Reviews {
                 AnimeFK = animeID,
                 Comentario = comentario.Replace("\r\n", "<br />"),
@@ -64,8 +81,13 @@ namespace MidgetBee.Controllers {
                 Utilizador = utilizador
             };
 
+            // adiciona esse objeto à base de dados
             _context.Reviews.Add(comment);
+
+            // guarda na base de dados
             await _context.SaveChangesAsync();
+
+            // redireciona o user para a página dos Details do Anime que o user antes estava
             return RedirectToAction(nameof(Details), new { id = animeID });
 
         }
