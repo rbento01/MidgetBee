@@ -26,6 +26,11 @@ namespace MidgetBee.Models {
         public string UserNameID { get; set; }
 
         /// <summary>
+        /// Vai possuir o valor de true caso o utilizador já tenho postado um comentário, false se ainda não colocou um comentário
+        /// </summary>
+        public bool contComment { get; set; }
+
+        /// <summary>
         /// Lista de Links associados aos Animes
         /// </summary>
         public ICollection<Reviews> ListaDeReviews { get; set; }
