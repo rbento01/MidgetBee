@@ -71,24 +71,36 @@ namespace MidgetBee.Controllers {
             // esta variável vai ter o valor do username do utilizador
             var utilizador = _context.Utilizadores.Where(u => u.UserNameID == _userManager.GetUserId(User)).FirstOrDefault();
 
-            // objeto do tipo Reviews que vai possuir todos os atributos desse mesmo modelo
-            var comment = new Reviews {
-                AnimeFK = animeID,
-                Comentario = comentario.Replace("\r\n", "<br />"),
-                Rating = rating,
-                Data = DateTime.Now,
-                Visibilidade = true,
-                Utilizador = utilizador
-            };
+            if (utilizador.contComment == false) {
+                // objeto do tipo Reviews que vai possuir todos os atributos desse mesmo modelo
+                var comment = new Reviews {
+                    AnimeFK = animeID,
+                    Comentario = comentario.Replace("\r\n", "<br />"),
+                    Rating = rating,
+                    Data = DateTime.Now,
+                    Visibilidade = true,
+                    Utilizador = utilizador
+                };
 
-            // adiciona esse objeto à base de dados
-            _context.Reviews.Add(comment);
+                // adiciona esse objeto à base de dados
+                _context.Reviews.Add(comment);
 
-            // guarda na base de dados
-            await _context.SaveChangesAsync();
+                // sinaliza que o utilizador já colocou um comentário
+                utilizador.contComment = true;
 
-            // redireciona o user para a página dos Details do Anime que o user antes estava
-            return RedirectToAction(nameof(Details), new { id = animeID });
+                // dá update à database para aparecer true
+                _context.Utilizadores.Update(utilizador);
+
+                // guarda na base de dados
+                await _context.SaveChangesAsync();
+
+                // redireciona o user para a página dos Details do Anime que o user antes estava
+                return RedirectToAction(nameof(Details), new { id = animeID });
+            } else {
+
+                ModelState.AddModelError("", "You can only comment once. Sorry.");
+                return RedirectToAction(nameof(Details), new { id = animeID });
+            }
 
         }
 

@@ -117,7 +117,8 @@ namespace MidgetBee.Areas.Identity.Pages.Account {
                     // Cria-se um objeto do tipo da classe Utilizadores que vai ter o email que o user inseriu e o ID que vai colocar na base de dados 
                     Utilizadores utilizador = new Utilizadores {
                         Email = user.Email,
-                        UserNameID = user.Id
+                        UserNameID = user.Id,
+                        contComment = false
                     };
 
                     // caso o email inserido tenho sido "admin@admin.pt" cria-se uma conta com um Role de admin
