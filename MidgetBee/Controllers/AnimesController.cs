@@ -47,11 +47,15 @@ namespace MidgetBee.Controllers {
                                        .Where(a => a.IdAnime == id)
                                        .Include(ar => ar.ListaDeReviews)
                                        .ThenInclude(r => r.Utilizador)
+                                       .Include(ul => ul.ListaDeUsers)
                                        .OrderByDescending(r => r.Data)
                                        .FirstOrDefaultAsync();
             if (anime == null) {
                 return NotFound();
             }
+
+            // lista de todas as categorias existentes
+            ViewBag.ListaDeUsers = _context.Utilizadores.OrderBy(c => c.IdUsers).ToList();
 
             return View(anime);
         }
@@ -101,6 +105,13 @@ namespace MidgetBee.Controllers {
                 ModelState.AddModelError("", "You can only comment once. Sorry.");
                 return RedirectToAction("Erro", "Animes");
             }
+
+        }
+
+        public async Task<IActionResult> AddFavoritos(int animeID) {
+            // esta variável vai ter o valor do username do utilizador
+            var utilizador = _context.Utilizadores.Where(u => u.UserNameID == _userManager.GetUserId(User)).FirstOrDefault();
+
 
         }
 

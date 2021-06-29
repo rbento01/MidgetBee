@@ -21,6 +21,12 @@
         <b>Categories: </b> @Html.DisplayFor(model => model.Categoria)<br /><br /><br />
     </div>
     <div class="form-group">
+            <form asp-action="AddFavoritos">
+                <input type="hidden" name="animeID" value="@Model.IdAnime" />
+                <input type="submit" value="Add to Favorites" class="btn btn-primary" />
+            </form>
+    </div>
+    <div class="form-group">
         <b>Synopsis:</b> @Html.DisplayFor(model => model.Sinopse)<br /><br />
     </div>
     <div id="comentarios">

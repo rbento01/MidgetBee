@@ -1,1 +1,5 @@
-Em vez de dar return NotFound() vai dar view return à view Erro do controller 
+Em vez de dar return NotFound() vai dar view return à view Erro do controller
+
+Conseguir passar a foto escolhida do anime para a pasta wwwroot
+
+Conseguir fazer o botão dos favoritos
