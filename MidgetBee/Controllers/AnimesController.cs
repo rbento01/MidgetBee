@@ -50,7 +50,6 @@ namespace MidgetBee.Controllers {
                                        .OrderByDescending(r => r.Data)
                                        .FirstOrDefaultAsync();
             if (anime == null) {
-                //return RedirectToAction(nameof(Erro));
                 return NotFound();
             }
 
@@ -100,7 +99,7 @@ namespace MidgetBee.Controllers {
             } else {
 
                 ModelState.AddModelError("", "You can only comment once. Sorry.");
-                return RedirectToAction(nameof(Details), new { id = animeID });
+                return RedirectToAction("Erro", "Animes");
             }
 
         }
