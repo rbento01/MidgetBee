@@ -136,12 +136,8 @@ namespace MidgetBee.Controllers {
                 // redireciona o user para a página dos Details do Anime que o user antes estava
                 return RedirectToAction(nameof(Details), new { id = animeID });
             } else {
-                var fav = new Favoritos {
-                    AnimeFK = animeID,
-                    UsersFK = utilizador.IdUsers
-                };
                 // remove da base de dados 
-                _context.Favoritos.Remove(fav);
+                _context.Favoritos.Remove(favoritos);
 
                 // guarda na base de dados
                 await _context.SaveChangesAsync();
