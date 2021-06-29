@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -12,8 +13,11 @@ namespace MidgetBee.Controllers {
     public class ReviewsController : Controller {
         private readonly AnimeDB _context;
 
-        public ReviewsController(AnimeDB context) {
+        private readonly UserManager<IdentityUser> _userManager;
+
+        public ReviewsController(AnimeDB context, UserManager<IdentityUser> userManager) {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: Reviews
@@ -89,6 +93,9 @@ namespace MidgetBee.Controllers {
 
             if (ModelState.IsValid) {
                 try {
+                    if (reviews.Visibilidade) {
+                        reviews.Visibilidade = true;
+                    }
                     _context.Update(reviews);
                     await _context.SaveChangesAsync();
                 } catch (DbUpdateConcurrencyException) {
@@ -98,7 +105,7 @@ namespace MidgetBee.Controllers {
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Details), "Animes", new { id = reviews.AnimeFK });
             }
             ViewData["AnimeFK"] = new SelectList(_context.Animes, "IdAnime", "IdAnime", reviews.AnimeFK);
             ViewData["UsersFK"] = new SelectList(_context.Utilizadores, "IdUsers", "IdUsers", reviews.UsersFK);
@@ -126,10 +133,19 @@ namespace MidgetBee.Controllers {
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id) {
+            // vai buscar o user que está a apagar
+            var utilizador = _context.Utilizadores.Where(u => u.UserNameID == _userManager.GetUserId(User)).FirstOrDefault();
+
+            // pode colocar outro comentário
+            utilizador.contComment = false;
+
+            // coloca na base de dados
+            _context.Utilizadores.Update(utilizador);
+
             var reviews = await _context.Reviews.FindAsync(id);
             _context.Reviews.Remove(reviews);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Details), "Animes", new { id = reviews.AnimeFK });
         }
 
         private bool ReviewsExists(int id) {

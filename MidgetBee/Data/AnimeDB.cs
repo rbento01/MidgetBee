@@ -87,6 +87,7 @@ namespace MidgetBee.Data {
         public DbSet<Animes> Animes { get; set; }
         public DbSet<Utilizadores> Utilizadores { get; set; }
         public DbSet<Reviews> Reviews { get; set; }
+        public DbSet<Favoritos> Favoritos { get; set; }
 
 
     }

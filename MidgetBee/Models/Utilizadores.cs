@@ -8,7 +8,7 @@ namespace MidgetBee.Models {
             // inicializar a lista de Reviews associados aos Utilizadores
             ListaDeReviews = new HashSet<Reviews>();
             // inicializar a lista de Animes associados aos Utilizadores
-            ListaDeAnimes = new HashSet<Animes>();
+            ListaDeFavoritos = new HashSet<Favoritos>();
         }
         /// <summary>
         /// Possui o Identificador do User
@@ -41,6 +41,6 @@ namespace MidgetBee.Models {
         /// <summary>
         /// Lista de Animes associados aos Utilizadores
         /// </summary>
-        public ICollection<Animes> ListaDeAnimes { get; set; }
+        public ICollection<Favoritos> ListaDeFavoritos { get; set; }
     }
 }

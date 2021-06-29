@@ -47,15 +47,24 @@ namespace MidgetBee.Controllers {
                                        .Where(a => a.IdAnime == id)
                                        .Include(ar => ar.ListaDeReviews)
                                        .ThenInclude(r => r.Utilizador)
-                                       .Include(ul => ul.ListaDeUsers)
                                        .OrderByDescending(r => r.Data)
                                        .FirstOrDefaultAsync();
             if (anime == null) {
                 return NotFound();
             }
 
-            // lista de todas as categorias existentes
-            ViewBag.ListaDeUsers = _context.Utilizadores.OrderBy(c => c.IdUsers).ToList();
+
+            // esta variável vai ter o valor do username do utilizador
+            var utilizador = _context.Utilizadores.Where(u => u.UserNameID == _userManager.GetUserId(User)).FirstOrDefault();
+
+            // vai procurar pelo "Gosto" do User
+            var favorito = await _context.Favoritos.Where(f => f.AnimeFK == id && f.UsersFK == utilizador.IdUsers).FirstOrDefaultAsync();
+
+            if (favorito == null) {
+                ViewBag.Favorito = false;
+            } else {
+                ViewBag.Favorito = true;
+            }
 
             return View(anime);
         }
@@ -102,8 +111,7 @@ namespace MidgetBee.Controllers {
                 return RedirectToAction(nameof(Details), new { id = animeID });
             } else {
 
-                ModelState.AddModelError("", "You can only comment once. Sorry.");
-                return RedirectToAction("Erro", "Animes");
+                return RedirectToAction(nameof(Details), new { id = animeID });
             }
 
         }
@@ -112,7 +120,35 @@ namespace MidgetBee.Controllers {
             // esta variável vai ter o valor do username do utilizador
             var utilizador = _context.Utilizadores.Where(u => u.UserNameID == _userManager.GetUserId(User)).FirstOrDefault();
 
+            var favoritos = await _context.Favoritos.Where(f => f.AnimeFK == animeID && f.UsersFK == utilizador.IdUsers).FirstOrDefaultAsync();
 
+            if (favoritos == null) {
+                var fav = new Favoritos {
+                    AnimeFK = animeID,
+                    UsersFK = utilizador.IdUsers
+                };
+                // Adiciona na base de dados
+                _context.Favoritos.Add(fav);
+
+                // guarda na base de dados
+                await _context.SaveChangesAsync();
+
+                // redireciona o user para a página dos Details do Anime que o user antes estava
+                return RedirectToAction(nameof(Details), new { id = animeID });
+            } else {
+                var fav = new Favoritos {
+                    AnimeFK = animeID,
+                    UsersFK = utilizador.IdUsers
+                };
+                // remove da base de dados 
+                _context.Favoritos.Remove(fav);
+
+                // guarda na base de dados
+                await _context.SaveChangesAsync();
+
+                // redireciona o user para a página dos Details do Anime que o user antes estava
+                return RedirectToAction(nameof(Details), new { id = animeID });
+            }
         }
 
         // GET: Animes/Create
