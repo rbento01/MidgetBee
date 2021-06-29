@@ -32,6 +32,10 @@
                         @if (User.IsInRole("Admin")) {
                             <button class="btn" onclick="location.href = '@Url.Action("Edit", "Reviews", new { id = item.IdReview })'">Esconder</button>
                         }
+                        @if (User.IsInRole("Cliente")) {
+                            <button class="btn btn-primary" style="height:39px" onclick="location.href = '@Url.Action("Edit", "Reviews", new { id = item.IdReview })'">Editar</button>
+                            <button class="btn btn-danger" style="height:39px" onclick="location.href = '@Url.Action("Delete", "Reviews", new { id = item.IdReview })'">Apagar</button>
+                        }
                         <br />
                         <span><b>Comentário:</b> @Html.Raw(item.Comentario)</span>
                     </div>
@@ -61,7 +65,7 @@
 <div>
     <br />
     @if (User.IsInRole("Admin")) {
-        <a asp-action="Edit" asp-route-id="@Model.IdAnime">Edit |</a>
+        <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.IdAnime">Edit |</a>
     }
-    <a asp-action="Index">Back to List</a>
+    <a class="btn btn-primary" asp-action="Index">Back to List</a>
 </div>
