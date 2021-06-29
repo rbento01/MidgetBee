@@ -50,6 +50,7 @@ namespace MidgetBee.Controllers {
                                        .OrderByDescending(r => r.Data)
                                        .FirstOrDefaultAsync();
             if (anime == null) {
+                //return RedirectToAction(nameof(Erro));
                 return NotFound();
             }
 
