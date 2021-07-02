@@ -1,0 +1,46 @@
+﻿@model IEnumerable<MidgetBee.Models.AnimesCategoria>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Categorias</h1>
+
+@if (User.IsInRole("Admin")) {
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Animes.Fotografia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Categorias)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    <img style="width: 200px; height: 250px; border: 4px solid black; object-fit: fill;" src="~/fotos/@Html.DisplayFor(modelItem => item.Animes.Fotografia)" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Categorias.nomeCategoria)
+                </td>
+                @if (User.IsInRole("Admin")) {
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.idAnimesCategoria">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.idAnimesCategoria">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.idAnimesCategoria">Delete</a>
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>

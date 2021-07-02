@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MidgetBee.Data;
 
 namespace MidgetBee.Migrations
 {
     [DbContext(typeof(AnimeDB))]
-    partial class AnimeDBModelSnapshot : ModelSnapshot
+    [Migration("20210702212251_AnimesCategoria")]
+    partial class AnimesCategoria
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -64,14 +66,14 @@ namespace MidgetBee.Migrations
                         new
                         {
                             Id = "c",
-                            ConcurrencyStamp = "7d1ac2e1-67a9-498f-bd77-bc6926a17f54",
+                            ConcurrencyStamp = "2e79e325-8cbf-41bc-9387-2bf5d00b074b",
                             Name = "Cliente",
                             NormalizedName = "CLIENTE"
                         },
                         new
                         {
                             Id = "a",
-                            ConcurrencyStamp = "66e89ecc-c4de-4a9f-86a7-9244b90b67a1",
+                            ConcurrencyStamp = "99bf4f0d-1d8e-4f5e-b17e-637eacd40650",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -745,362 +747,176 @@ namespace MidgetBee.Migrations
                         new
                         {
                             idAnimesCategoria = 2,
-                            AnimesFK = 1,
+                            AnimesFK = 2,
                             CategoriaFK = 2
                         },
                         new
                         {
                             idAnimesCategoria = 3,
-                            AnimesFK = 2,
-                            CategoriaFK = 2
+                            AnimesFK = 3,
+                            CategoriaFK = 3
                         },
                         new
                         {
                             idAnimesCategoria = 4,
-                            AnimesFK = 2,
-                            CategoriaFK = 3
+                            AnimesFK = 4,
+                            CategoriaFK = 4
                         },
                         new
                         {
                             idAnimesCategoria = 5,
-                            AnimesFK = 3,
-                            CategoriaFK = 3
+                            AnimesFK = 5,
+                            CategoriaFK = 5
                         },
                         new
                         {
                             idAnimesCategoria = 6,
-                            AnimesFK = 3,
-                            CategoriaFK = 4
+                            AnimesFK = 6,
+                            CategoriaFK = 6
                         },
                         new
                         {
                             idAnimesCategoria = 7,
-                            AnimesFK = 4,
-                            CategoriaFK = 4
+                            AnimesFK = 7,
+                            CategoriaFK = 7
                         },
                         new
                         {
                             idAnimesCategoria = 8,
-                            AnimesFK = 4,
-                            CategoriaFK = 5
+                            AnimesFK = 8,
+                            CategoriaFK = 8
                         },
                         new
                         {
                             idAnimesCategoria = 9,
-                            AnimesFK = 5,
-                            CategoriaFK = 5
+                            AnimesFK = 9,
+                            CategoriaFK = 9
                         },
                         new
                         {
                             idAnimesCategoria = 10,
-                            AnimesFK = 5,
-                            CategoriaFK = 6
+                            AnimesFK = 10,
+                            CategoriaFK = 10
                         },
                         new
                         {
                             idAnimesCategoria = 11,
-                            AnimesFK = 6,
-                            CategoriaFK = 6
-                        },
-                        new
-                        {
-                            idAnimesCategoria = 12,
-                            AnimesFK = 6,
-                            CategoriaFK = 7
-                        },
-                        new
-                        {
-                            idAnimesCategoria = 13,
-                            AnimesFK = 7,
-                            CategoriaFK = 7
-                        },
-                        new
-                        {
-                            idAnimesCategoria = 14,
-                            AnimesFK = 7,
-                            CategoriaFK = 8
-                        },
-                        new
-                        {
-                            idAnimesCategoria = 15,
-                            AnimesFK = 8,
-                            CategoriaFK = 8
-                        },
-                        new
-                        {
-                            idAnimesCategoria = 16,
-                            AnimesFK = 8,
-                            CategoriaFK = 9
-                        },
-                        new
-                        {
-                            idAnimesCategoria = 17,
-                            AnimesFK = 9,
-                            CategoriaFK = 9
-                        },
-                        new
-                        {
-                            idAnimesCategoria = 18,
-                            AnimesFK = 9,
-                            CategoriaFK = 10
-                        },
-                        new
-                        {
-                            idAnimesCategoria = 19,
-                            AnimesFK = 10,
-                            CategoriaFK = 10
-                        },
-                        new
-                        {
-                            idAnimesCategoria = 20,
-                            AnimesFK = 10,
+                            AnimesFK = 11,
                             CategoriaFK = 1
                         },
                         new
                         {
+                            idAnimesCategoria = 12,
+                            AnimesFK = 12,
+                            CategoriaFK = 2
+                        },
+                        new
+                        {
+                            idAnimesCategoria = 13,
+                            AnimesFK = 13,
+                            CategoriaFK = 3
+                        },
+                        new
+                        {
+                            idAnimesCategoria = 14,
+                            AnimesFK = 14,
+                            CategoriaFK = 4
+                        },
+                        new
+                        {
+                            idAnimesCategoria = 15,
+                            AnimesFK = 15,
+                            CategoriaFK = 5
+                        },
+                        new
+                        {
+                            idAnimesCategoria = 16,
+                            AnimesFK = 16,
+                            CategoriaFK = 6
+                        },
+                        new
+                        {
+                            idAnimesCategoria = 17,
+                            AnimesFK = 17,
+                            CategoriaFK = 7
+                        },
+                        new
+                        {
+                            idAnimesCategoria = 18,
+                            AnimesFK = 18,
+                            CategoriaFK = 8
+                        },
+                        new
+                        {
+                            idAnimesCategoria = 19,
+                            AnimesFK = 19,
+                            CategoriaFK = 9
+                        },
+                        new
+                        {
+                            idAnimesCategoria = 20,
+                            AnimesFK = 20,
+                            CategoriaFK = 10
+                        },
+                        new
+                        {
                             idAnimesCategoria = 21,
-                            AnimesFK = 11,
+                            AnimesFK = 21,
                             CategoriaFK = 1
                         },
                         new
                         {
                             idAnimesCategoria = 22,
-                            AnimesFK = 11,
+                            AnimesFK = 22,
                             CategoriaFK = 2
                         },
                         new
                         {
                             idAnimesCategoria = 23,
-                            AnimesFK = 12,
-                            CategoriaFK = 2
+                            AnimesFK = 23,
+                            CategoriaFK = 3
                         },
                         new
                         {
                             idAnimesCategoria = 24,
-                            AnimesFK = 12,
-                            CategoriaFK = 3
+                            AnimesFK = 24,
+                            CategoriaFK = 4
                         },
                         new
                         {
                             idAnimesCategoria = 25,
-                            AnimesFK = 13,
-                            CategoriaFK = 3
+                            AnimesFK = 25,
+                            CategoriaFK = 5
                         },
                         new
                         {
                             idAnimesCategoria = 26,
-                            AnimesFK = 13,
-                            CategoriaFK = 4
+                            AnimesFK = 26,
+                            CategoriaFK = 6
                         },
                         new
                         {
                             idAnimesCategoria = 27,
-                            AnimesFK = 14,
-                            CategoriaFK = 4
+                            AnimesFK = 27,
+                            CategoriaFK = 7
                         },
                         new
                         {
                             idAnimesCategoria = 28,
-                            AnimesFK = 14,
-                            CategoriaFK = 5
+                            AnimesFK = 28,
+                            CategoriaFK = 8
                         },
                         new
                         {
                             idAnimesCategoria = 29,
-                            AnimesFK = 15,
-                            CategoriaFK = 5
+                            AnimesFK = 29,
+                            CategoriaFK = 9
                         },
                         new
                         {
                             idAnimesCategoria = 30,
-                            AnimesFK = 15,
-                            CategoriaFK = 6
-                        },
-                        new
-                        {
-                            idAnimesCategoria = 31,
-                            AnimesFK = 16,
-                            CategoriaFK = 6
-                        },
-                        new
-                        {
-                            idAnimesCategoria = 32,
-                            AnimesFK = 16,
-                            CategoriaFK = 7
-                        },
-                        new
-                        {
-                            idAnimesCategoria = 33,
-                            AnimesFK = 17,
-                            CategoriaFK = 7
-                        },
-                        new
-                        {
-                            idAnimesCategoria = 34,
-                            AnimesFK = 17,
-                            CategoriaFK = 8
-                        },
-                        new
-                        {
-                            idAnimesCategoria = 35,
-                            AnimesFK = 18,
-                            CategoriaFK = 8
-                        },
-                        new
-                        {
-                            idAnimesCategoria = 36,
-                            AnimesFK = 18,
-                            CategoriaFK = 9
-                        },
-                        new
-                        {
-                            idAnimesCategoria = 37,
-                            AnimesFK = 19,
-                            CategoriaFK = 9
-                        },
-                        new
-                        {
-                            idAnimesCategoria = 38,
-                            AnimesFK = 19,
-                            CategoriaFK = 10
-                        },
-                        new
-                        {
-                            idAnimesCategoria = 39,
-                            AnimesFK = 20,
-                            CategoriaFK = 10
-                        },
-                        new
-                        {
-                            idAnimesCategoria = 40,
-                            AnimesFK = 20,
-                            CategoriaFK = 1
-                        },
-                        new
-                        {
-                            idAnimesCategoria = 41,
-                            AnimesFK = 20,
-                            CategoriaFK = 2
-                        },
-                        new
-                        {
-                            idAnimesCategoria = 42,
-                            AnimesFK = 21,
-                            CategoriaFK = 1
-                        },
-                        new
-                        {
-                            idAnimesCategoria = 43,
-                            AnimesFK = 21,
-                            CategoriaFK = 2
-                        },
-                        new
-                        {
-                            idAnimesCategoria = 44,
-                            AnimesFK = 22,
-                            CategoriaFK = 2
-                        },
-                        new
-                        {
-                            idAnimesCategoria = 45,
-                            AnimesFK = 22,
-                            CategoriaFK = 3
-                        },
-                        new
-                        {
-                            idAnimesCategoria = 46,
-                            AnimesFK = 23,
-                            CategoriaFK = 3
-                        },
-                        new
-                        {
-                            idAnimesCategoria = 47,
-                            AnimesFK = 23,
-                            CategoriaFK = 4
-                        },
-                        new
-                        {
-                            idAnimesCategoria = 48,
-                            AnimesFK = 24,
-                            CategoriaFK = 4
-                        },
-                        new
-                        {
-                            idAnimesCategoria = 49,
-                            AnimesFK = 24,
-                            CategoriaFK = 5
-                        },
-                        new
-                        {
-                            idAnimesCategoria = 50,
-                            AnimesFK = 25,
-                            CategoriaFK = 5
-                        },
-                        new
-                        {
-                            idAnimesCategoria = 51,
-                            AnimesFK = 25,
-                            CategoriaFK = 6
-                        },
-                        new
-                        {
-                            idAnimesCategoria = 52,
-                            AnimesFK = 26,
-                            CategoriaFK = 6
-                        },
-                        new
-                        {
-                            idAnimesCategoria = 53,
-                            AnimesFK = 26,
-                            CategoriaFK = 7
-                        },
-                        new
-                        {
-                            idAnimesCategoria = 54,
-                            AnimesFK = 27,
-                            CategoriaFK = 7
-                        },
-                        new
-                        {
-                            idAnimesCategoria = 55,
-                            AnimesFK = 27,
-                            CategoriaFK = 8
-                        },
-                        new
-                        {
-                            idAnimesCategoria = 56,
-                            AnimesFK = 28,
-                            CategoriaFK = 8
-                        },
-                        new
-                        {
-                            idAnimesCategoria = 57,
-                            AnimesFK = 28,
-                            CategoriaFK = 9
-                        },
-                        new
-                        {
-                            idAnimesCategoria = 58,
-                            AnimesFK = 29,
-                            CategoriaFK = 9
-                        },
-                        new
-                        {
-                            idAnimesCategoria = 59,
-                            AnimesFK = 29,
-                            CategoriaFK = 10
-                        },
-                        new
-                        {
-                            idAnimesCategoria = 60,
                             AnimesFK = 30,
                             CategoriaFK = 10
-                        },
-                        new
-                        {
-                            idAnimesCategoria = 61,
-                            AnimesFK = 30,
-                            CategoriaFK = 1
                         });
                 });
 
