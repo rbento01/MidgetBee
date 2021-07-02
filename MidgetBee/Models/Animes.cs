@@ -12,6 +12,8 @@ namespace MidgetBee.Models {
             ListaDeReviews = new HashSet<Reviews>();
             // inicializar a lista de Utilizadores associados aos Animes
             ListaDeFavoritos = new HashSet<Favoritos>();
+            // inicializar a lista de Categorias associados aos Animes
+            ListaDeCategorias = new HashSet<Categorias>();
         }
 
         /// <summary>
@@ -79,5 +81,10 @@ namespace MidgetBee.Models {
         /// Lista de Utilizadores ligados aos Animes
         /// </summary>
         public ICollection<Favoritos> ListaDeFavoritos { get; set; }
+
+        /// <summary>
+        /// Lista de Categorias ligadas aos Animes
+        /// </summary>
+        public ICollection<Categorias> ListaDeCategorias { get; set; }
     }
 }

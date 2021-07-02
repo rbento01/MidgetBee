@@ -82,13 +82,17 @@ namespace MidgetBee.Data {
 
                 new Animes { IdAnime = 30, Nome = "Shokugeki No Souma", QuantEpisodios = "73", Rating = 8.24, Sinopse = "Ever since he was a child, fifteen-year-old Souma Yukihira has helped his father by working as the sous chef in the restaurant his father runs and owns. Throughout the years, Souma developed a passion for entertaining his customers with his creative, skilled, and daring culinary creations. His dream is to someday own his family's restaurant as its head chef. Yet when his father suddenly decides to close the restaurant to test his cooking abilities in restaurants around the world, he sends Souma to Tootsuki Culinary Academy, an elite cooking school where only 10 percent of the students graduate.The institution is famous for its 'Shokugeki' or 'food wars,' where students face off in intense, high - stakes cooking showdowns. As Souma and his new schoolmates struggle to survive the extreme lifestyle of Tootsuki, more and greater challenges await him, putting his years of learning under his father to the test.", Autor = "Yuto Tsukuda", Estudio = "J.C.Staff", Data = "4 de abril de 2015 até 26 de setembro, 2020", Links = "https://www.crunchyroll.com/pt-pt/food-wars-shokugeki-no-soma", Fotografia = "FoodWars.jpg", Categoria = "Ecchi, School, Shounen" }
             );
+
+            modelBuilder.Entity<Categorias>().HasData(
+                new 
+            );
         }
         //Representar as Tabelas da BD
         public DbSet<Animes> Animes { get; set; }
         public DbSet<Utilizadores> Utilizadores { get; set; }
         public DbSet<Reviews> Reviews { get; set; }
         public DbSet<Favoritos> Favoritos { get; set; }
-
+        public DbSet<Categorias> Categorias { get; set; }
 
     }
 }
