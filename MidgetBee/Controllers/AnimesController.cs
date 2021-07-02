@@ -53,19 +53,20 @@ namespace MidgetBee.Controllers {
                 return NotFound();
             }
 
+            if (User.Identity.IsAuthenticated) {
+                // esta variável vai ter o valor do username do utilizador
+                var utilizador = await _context.Utilizadores.Where(u => u.UserNameID == _userManager.GetUserId(User)).FirstOrDefaultAsync();
 
-            // esta variável vai ter o valor do username do utilizador
-            var utilizador = _context.Utilizadores.Where(u => u.UserNameID == _userManager.GetUserId(User)).FirstOrDefault();
+                // vai procurar pelo "Gosto" do User
+                var favorito = await _context.Favoritos.Where(f => f.AnimeFK == id && f.UsersFK == utilizador.IdUsers).FirstOrDefaultAsync();
 
-            // vai procurar pelo "Gosto" do User
-            var favorito = await _context.Favoritos.Where(f => f.AnimeFK == id && f.UsersFK == utilizador.IdUsers).FirstOrDefaultAsync();
-
-            if (favorito == null) {
-                ViewBag.Favorito = false;
-            } else {
-                ViewBag.Favorito = true;
+                if (favorito == null) {
+                    ViewBag.Favorito = false;
+                } else {
+                    ViewBag.Favorito = true;
+                }
             }
-
+            
             return View(anime);
         }
 

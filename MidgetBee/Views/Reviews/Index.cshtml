@@ -6,34 +6,33 @@
 
 <h1>Index</h1>
 
-
-@if (User.IsInRole("Admin")) {
-    <p>
-        <a asp-action="Create">Create New</a>
-    </p>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Anime.Fotografia)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Comentario)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Rating)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Data)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.UsersFK)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model) {
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Anime.Fotografia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Comentario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rating)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Data)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UsersFK)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model) {
+            @if ((item.Utilizador.Email == User.Identity.Name && User.IsInRole("Cliente")) || User.IsInRole("Admin")) {
                 <tr>
                     <td>
                         <img src="~/fotos/@Html.DisplayFor(modelItem => item.Anime.Fotografia)" alt="Fotografia" width="200" height="300" />
@@ -56,6 +55,6 @@
                     </td>
                 </tr>
             }
-        </tbody>
-    </table>
-}
+        }
+    </tbody>
+</table>

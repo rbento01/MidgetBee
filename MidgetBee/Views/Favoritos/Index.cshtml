@@ -19,19 +19,21 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-    if (item.Utilizador.Email == User.Identity.Name) {
-        <tr>
-            <td>
-                <img style="width: 200px; height: 250px; border: 4px solid black; object-fit: fill;" src="~/fotos/@Html.DisplayFor(modelItem => item.Anime.Fotografia)" alt="Foto Anime" />
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IdFavoritos">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdFavoritos">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdFavoritos">Delete</a>
-            </td>
-        </tr>
-    }
-}
+        @foreach (var item in Model) {
+            if (item.Utilizador.Email == User.Identity.Name) {
+                <tr>
+                    <td>
+                        <img style="width: 200px; height: 250px; border: 4px solid black; object-fit: fill;" src="~/fotos/@Html.DisplayFor(modelItem => item.Anime.Fotografia)" alt="Foto Anime" />
+                    </td>
+                    @if (User.IsInRole("Admin")) {
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.IdFavoritos">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.IdFavoritos">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.IdFavoritos">Delete</a>
+                        </td>
+                    }
+                </tr>
+            }
+        }
     </tbody>
 </table>
