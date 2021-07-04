@@ -53,11 +53,13 @@
                     <input asp-for="Links" class="form-control" />
                     <span asp-validation-for="Links" class="text-danger"></span>
                 </div>
-                <div class="form-group">
-                    <label asp-for="Fotografia" class="control-label"></label>
-                    <input type="file" asp-for="Fotografia" accept=".png,.jpg,.jpeg" class="form-control" />
-                    <span asp-validation-for="Fotografia" class="text-danger"></span>
-                </div>
+            </form>
+            <div class="form-group">
+                <label asp-for="Fotografia" class="control-label"></label>
+                <input type="file" name="imgFile" class="form-control" />
+                <span asp-validation-for="Fotografia" class="text-danger"></span>
+            </div>
+            <form asp-action="Edit">
                 <div class="form-group">
                     <label asp-for="Categoria" class="control-label"></label>
                     <input asp-for="Categoria" class="form-control" />

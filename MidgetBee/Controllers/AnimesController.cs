@@ -8,6 +8,9 @@ using MidgetBee.Models;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
 
 namespace MidgetBee.Controllers {
     public class AnimesController : Controller {
@@ -18,9 +21,12 @@ namespace MidgetBee.Controllers {
         /// </summary>
         private readonly UserManager<IdentityUser> _userManager;
 
-        public AnimesController(AnimeDB context, UserManager<IdentityUser> userManager) {
+        private readonly IWebHostEnvironment _webhost;
+
+        public AnimesController(AnimeDB context, UserManager<IdentityUser> userManager, IWebHostEnvironment webhost) {
             _context = context;
             _userManager = userManager;
+            _webhost = webhost;
         }
 
         // GET: Animes
@@ -158,11 +164,24 @@ namespace MidgetBee.Controllers {
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdAnime,Nome,QuantEpisodios,Rating,Sinopse,Autor,Estudio,Data,Links,Fotografia,Categoria")] Animes animes) {
+        public async Task<IActionResult> Create([Bind("IdAnime,Nome,QuantEpisodios,Rating,Sinopse,Autor,Estudio,Data,Links,Fotografia,Categoria")] Animes animes, IFormFile imgFile) {
             if (ModelState.IsValid) {
                 _context.Add(animes);
-                await _context.SaveChangesAsync();
+
+
+                //_webhost.WebRootPath vai ter o path para a pasta wwwroot
+                var saveimg = Path.Combine(_webhost.WebRootPath, "fotos", imgFile.FileName);
+
+                var imgext = Path.GetExtension(imgFile.FileName);
+
+                if (imgext == ".jpg" || imgext == ".png") {
+                    using (var uploadimg = new FileStream(saveimg, FileMode.Create)) {
+                        await imgFile.CopyToAsync(uploadimg);
+                        await _context.SaveChangesAsync();
+                    }
+                }
                 return RedirectToAction(nameof(Index));
+
             }
             return View(animes);
         }
