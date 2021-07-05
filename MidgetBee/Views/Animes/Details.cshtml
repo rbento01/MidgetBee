@@ -49,9 +49,9 @@
                         <span><b>User:</b> @item.Utilizador.Email</span>
                         <span style="float:right; "> <b>Rating:</b> @item.Rating</span>
                         @if (User.IsInRole("Admin")) {
-                            <button class="btn btn-primary" style="height:35px; margin-left:10px;" onclick="location.href = '@Url.Action("Edit", "Reviews", new { id = item.IdReview })'">Esconder</button>
+                            <button class="btn btn-primary" style="height:39px; margin-left:10px;" onclick="location.href = '@Url.Action("Edit", "Reviews", new { id = item.IdReview })'">Esconder</button>
                         }
-                        @if (User.IsInRole("Cliente") && item.Utilizador.Email == User.Identity.Name) {
+                        @if ((User.IsInRole("Cliente") || User.IsInRole("Admin")) && item.Utilizador.Email == User.Identity.Name) {
                             <button class="btn btn-primary" style="height: 39px; margin-left: 10px;" onclick="location.href = '@Url.Action("Edit", "Reviews", new { id = item.IdReview })'">Editar</button>
                             <button class="btn btn-danger" style="height: 39px; margin-left: 10px;" onclick="location.href = '@Url.Action("Delete", "Reviews", new { id = item.IdReview })'">Apagar</button>
                         }
