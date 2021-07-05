@@ -168,6 +168,7 @@ namespace MidgetBee.Controllers {
             if (ModelState.IsValid) {
                 _context.Add(animes);
 
+                animes.Fotografia = imgFile.FileName;
 
                 //_webhost.WebRootPath vai ter o path para a pasta wwwroot
                 var saveimg = Path.Combine(_webhost.WebRootPath, "fotos", imgFile.FileName);

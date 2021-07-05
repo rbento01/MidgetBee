@@ -2,4 +2,10 @@ Em vez de dar return NotFound() vai dar view return à view Erro do controller
 
 Conseguir passar a foto escolhida do anime para a pasta wwwroot
 
-Conseguir fazer o botão dos favoritos
+Conseguir fazer o botão dos favoritos FEITO
+
+Feito desde da Época Normal:
+	- O user pode editar e apagar os seus comentários 
+	- O user se apagar o seu comentário pode colocar outro
+	- Na edição de animes, já é um file chooser, mas não passa em parâmetro
+	- Um coração cheio aparece se o user tem aquele anime como favorito e um coração vazio aparece se o user não tem o anime como favorito
