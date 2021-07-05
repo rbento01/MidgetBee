@@ -8,29 +8,23 @@ using Microsoft.EntityFrameworkCore;
 using MidgetBee.Data;
 using MidgetBee.Models;
 
-namespace MidgetBee.Controllers
-{
-    public class FavoritosController : Controller
-    {
+namespace MidgetBee.Controllers {
+    public class FavoritosController : Controller {
         private readonly AnimeDB _context;
 
-        public FavoritosController(AnimeDB context)
-        {
+        public FavoritosController(AnimeDB context) {
             _context = context;
         }
 
         // GET: Favoritos
-        public async Task<IActionResult> Index()
-        {
+        public async Task<IActionResult> Index() {
             var animeDB = _context.Favoritos.Include(f => f.Anime).Include(f => f.Utilizador);
             return View(await animeDB.ToListAsync());
         }
 
         // GET: Favoritos/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
+        public async Task<IActionResult> Details(int? id) {
+            if (id == null) {
                 return NotFound();
             }
 
@@ -38,8 +32,7 @@ namespace MidgetBee.Controllers
                 .Include(f => f.Anime)
                 .Include(f => f.Utilizador)
                 .FirstOrDefaultAsync(m => m.IdFavoritos == id);
-            if (favoritos == null)
-            {
+            if (favoritos == null) {
                 return NotFound();
             }
 
@@ -47,8 +40,7 @@ namespace MidgetBee.Controllers
         }
 
         // GET: Favoritos/Create
-        public IActionResult Create()
-        {
+        public IActionResult Create() {
             ViewData["AnimeFK"] = new SelectList(_context.Animes, "IdAnime", "IdAnime");
             ViewData["UsersFK"] = new SelectList(_context.Utilizadores, "IdUsers", "IdUsers");
             return View();
@@ -59,10 +51,8 @@ namespace MidgetBee.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdFavoritos,UsersFK,AnimeFK")] Favoritos favoritos)
-        {
-            if (ModelState.IsValid)
-            {
+        public async Task<IActionResult> Create([Bind("IdFavoritos,UsersFK,AnimeFK")] Favoritos favoritos) {
+            if (ModelState.IsValid) {
                 _context.Add(favoritos);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -73,16 +63,13 @@ namespace MidgetBee.Controllers
         }
 
         // GET: Favoritos/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
+        public async Task<IActionResult> Edit(int? id) {
+            if (id == null) {
                 return NotFound();
             }
 
             var favoritos = await _context.Favoritos.FindAsync(id);
-            if (favoritos == null)
-            {
+            if (favoritos == null) {
                 return NotFound();
             }
             ViewData["AnimeFK"] = new SelectList(_context.Animes, "IdAnime", "IdAnime", favoritos.AnimeFK);
@@ -95,28 +82,19 @@ namespace MidgetBee.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdFavoritos,UsersFK,AnimeFK")] Favoritos favoritos)
-        {
-            if (id != favoritos.IdFavoritos)
-            {
+        public async Task<IActionResult> Edit(int id, [Bind("IdFavoritos,UsersFK,AnimeFK")] Favoritos favoritos) {
+            if (id != favoritos.IdFavoritos) {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
+            if (ModelState.IsValid) {
+                try {
                     _context.Update(favoritos);
                     await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!FavoritosExists(favoritos.IdFavoritos))
-                    {
+                } catch (DbUpdateConcurrencyException) {
+                    if (!FavoritosExists(favoritos.IdFavoritos)) {
                         return NotFound();
-                    }
-                    else
-                    {
+                    } else {
                         throw;
                     }
                 }
@@ -128,10 +106,8 @@ namespace MidgetBee.Controllers
         }
 
         // GET: Favoritos/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
+        public async Task<IActionResult> Delete(int? id) {
+            if (id == null) {
                 return NotFound();
             }
 
@@ -139,8 +115,7 @@ namespace MidgetBee.Controllers
                 .Include(f => f.Anime)
                 .Include(f => f.Utilizador)
                 .FirstOrDefaultAsync(m => m.IdFavoritos == id);
-            if (favoritos == null)
-            {
+            if (favoritos == null) {
                 return NotFound();
             }
 
@@ -150,16 +125,14 @@ namespace MidgetBee.Controllers
         // POST: Favoritos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
+        public async Task<IActionResult> DeleteConfirmed(int id) {
             var favoritos = await _context.Favoritos.FindAsync(id);
             _context.Favoritos.Remove(favoritos);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool FavoritosExists(int id)
-        {
+        private bool FavoritosExists(int id) {
             return _context.Favoritos.Any(e => e.IdFavoritos == id);
         }
     }

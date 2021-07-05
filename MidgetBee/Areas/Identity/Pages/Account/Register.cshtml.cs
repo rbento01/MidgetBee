@@ -107,7 +107,7 @@ namespace MidgetBee.Areas.Identity.Pages.Account {
 
                 // Cria o user
                 var result = await _userManager.CreateAsync(user, Input.Password);
-                
+
                 // se conseguiu criar o user
                 if (result.Succeeded) {
                     _logger.LogInformation("User created a new account with password.");
@@ -126,7 +126,7 @@ namespace MidgetBee.Areas.Identity.Pages.Account {
                         // atribuir ao user o role "Admin"
                         await _userManager.AddToRoleAsync(user, "Admin");
 
-                    // caso tenha sido criado uma conta com outro email, cria-se esse user com o role de Cliente
+                        // caso tenha sido criado uma conta com outro email, cria-se esse user com o role de Cliente
                     } else {
                         // atribuir ao user o role "Cliente"
                         await _userManager.AddToRoleAsync(user, "Cliente");
@@ -144,8 +144,8 @@ namespace MidgetBee.Areas.Identity.Pages.Account {
 
                         // redireciona o user para a página de Login, para proceder a fazer o login da conta recentemente criada
                         return RedirectToPage("Login");
-                    
-                    // caso tenha sido encontrado um erro na criação do utilizador
+
+                        // caso tenha sido encontrado um erro na criação do utilizador
                     } catch (Exception) {
                         // apresenta uma mensagem de erro
                         ModelState.AddModelError("", "Something wrong happened...");

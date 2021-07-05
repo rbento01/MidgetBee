@@ -1,25 +1,20 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace MidgetBee.Migrations
-{
-    public partial class Favoritos : Migration
-    {
-        protected override void Up(MigrationBuilder migrationBuilder)
-        {
+namespace MidgetBee.Migrations {
+    public partial class Favoritos : Migration {
+        protected override void Up(MigrationBuilder migrationBuilder) {
             migrationBuilder.DropTable(
                 name: "AnimesUtilizadores");
 
             migrationBuilder.CreateTable(
                 name: "Favoritos",
-                columns: table => new
-                {
+                columns: table => new {
                     IdFavoritos = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UsersFK = table.Column<int>(type: "int", nullable: false),
                     AnimeFK = table.Column<int>(type: "int", nullable: false)
                 },
-                constraints: table =>
-                {
+                constraints: table => {
                     table.PrimaryKey("PK_Favoritos", x => x.IdFavoritos);
                     table.ForeignKey(
                         name: "FK_Favoritos_Animes_AnimeFK",
@@ -60,20 +55,17 @@ namespace MidgetBee.Migrations
                 column: "UsersFK");
         }
 
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
+        protected override void Down(MigrationBuilder migrationBuilder) {
             migrationBuilder.DropTable(
                 name: "Favoritos");
 
             migrationBuilder.CreateTable(
                 name: "AnimesUtilizadores",
-                columns: table => new
-                {
+                columns: table => new {
                     ListaDeAnimesIdAnime = table.Column<int>(type: "int", nullable: false),
                     ListaDeUsersIdUsers = table.Column<int>(type: "int", nullable: false)
                 },
-                constraints: table =>
-                {
+                constraints: table => {
                     table.PrimaryKey("PK_AnimesUtilizadores", x => new { x.ListaDeAnimesIdAnime, x.ListaDeUsersIdUsers });
                     table.ForeignKey(
                         name: "FK_AnimesUtilizadores_Animes_ListaDeAnimesIdAnime",

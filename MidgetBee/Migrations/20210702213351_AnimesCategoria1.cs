@@ -1,11 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace MidgetBee.Migrations
-{
-    public partial class AnimesCategoria1 : Migration
-    {
-        protected override void Up(MigrationBuilder migrationBuilder)
-        {
+namespace MidgetBee.Migrations {
+    public partial class AnimesCategoria1 : Migration {
+        protected override void Up(MigrationBuilder migrationBuilder) {
             migrationBuilder.UpdateData(
                 table: "AnimesCategoria",
                 keyColumn: "idAnimesCategoria",
@@ -269,8 +266,7 @@ namespace MidgetBee.Migrations
                 value: "7d1ac2e1-67a9-498f-bd77-bc6926a17f54");
         }
 
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
+        protected override void Down(MigrationBuilder migrationBuilder) {
             migrationBuilder.DeleteData(
                 table: "AnimesCategoria",
                 keyColumn: "idAnimesCategoria",

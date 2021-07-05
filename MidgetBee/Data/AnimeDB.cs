@@ -85,7 +85,7 @@ namespace MidgetBee.Data {
             );
 
             modelBuilder.Entity<Categorias>().HasData(
-                new Categorias { IdCategoria = 1, nomeCategoria = "Action"},
+                new Categorias { IdCategoria = 1, nomeCategoria = "Action" },
                 new Categorias { IdCategoria = 2, nomeCategoria = "Comedy" },
                 new Categorias { IdCategoria = 3, nomeCategoria = "Love" },
                 new Categorias { IdCategoria = 4, nomeCategoria = "Historical" },

@@ -72,7 +72,7 @@ namespace MidgetBee.Controllers {
                     ViewBag.Favorito = true;
                 }
             }
-            
+
             return View(anime);
         }
 

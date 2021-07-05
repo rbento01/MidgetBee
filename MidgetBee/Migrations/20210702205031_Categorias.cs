@@ -1,33 +1,26 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace MidgetBee.Migrations
-{
-    public partial class Categorias : Migration
-    {
-        protected override void Up(MigrationBuilder migrationBuilder)
-        {
+namespace MidgetBee.Migrations {
+    public partial class Categorias : Migration {
+        protected override void Up(MigrationBuilder migrationBuilder) {
             migrationBuilder.CreateTable(
                 name: "Categorias",
-                columns: table => new
-                {
+                columns: table => new {
                     IdCategoria = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     nomeCategoria = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
-                constraints: table =>
-                {
+                constraints: table => {
                     table.PrimaryKey("PK_Categorias", x => x.IdCategoria);
                 });
 
             migrationBuilder.CreateTable(
                 name: "AnimesCategorias",
-                columns: table => new
-                {
+                columns: table => new {
                     ListaDeAnimesIdAnime = table.Column<int>(type: "int", nullable: false),
                     ListaDeCategoriasIdCategoria = table.Column<int>(type: "int", nullable: false)
                 },
-                constraints: table =>
-                {
+                constraints: table => {
                     table.PrimaryKey("PK_AnimesCategorias", x => new { x.ListaDeAnimesIdAnime, x.ListaDeCategoriasIdCategoria });
                     table.ForeignKey(
                         name: "FK_AnimesCategorias_Animes_ListaDeAnimesIdAnime",
@@ -63,8 +56,7 @@ namespace MidgetBee.Migrations
                 column: "ListaDeCategoriasIdCategoria");
         }
 
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
+        protected override void Down(MigrationBuilder migrationBuilder) {
             migrationBuilder.DropTable(
                 name: "AnimesCategorias");
 

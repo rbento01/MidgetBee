@@ -1,20 +1,15 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace MidgetBee.Migrations
-{
-    public partial class Criacao_Listas_Animes_Users : Migration
-    {
-        protected override void Up(MigrationBuilder migrationBuilder)
-        {
+namespace MidgetBee.Migrations {
+    public partial class Criacao_Listas_Animes_Users : Migration {
+        protected override void Up(MigrationBuilder migrationBuilder) {
             migrationBuilder.CreateTable(
                 name: "AnimesUtilizadores",
-                columns: table => new
-                {
+                columns: table => new {
                     ListaDeAnimesIdAnime = table.Column<int>(type: "int", nullable: false),
                     ListaDeUsersIdUsers = table.Column<int>(type: "int", nullable: false)
                 },
-                constraints: table =>
-                {
+                constraints: table => {
                     table.PrimaryKey("PK_AnimesUtilizadores", x => new { x.ListaDeAnimesIdAnime, x.ListaDeUsersIdUsers });
                     table.ForeignKey(
                         name: "FK_AnimesUtilizadores_Animes_ListaDeAnimesIdAnime",
@@ -50,8 +45,7 @@ namespace MidgetBee.Migrations
                 column: "ListaDeUsersIdUsers");
         }
 
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
+        protected override void Down(MigrationBuilder migrationBuilder) {
             migrationBuilder.DropTable(
                 name: "AnimesUtilizadores");
 
