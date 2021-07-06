@@ -240,6 +240,8 @@ namespace MidgetBee.Controllers {
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("IdAnime,Nome,QuantEpisodios,Rating,Sinopse,Autor,Estudio,Data,Links,Fotografia,Categoria")] Animes animes, IFormFile imgFile, int[] CategoriaEscolhida) {
+
+
             if (id != animes.IdAnime) {
                 return NotFound();
             }
