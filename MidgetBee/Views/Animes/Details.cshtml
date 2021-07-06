@@ -26,7 +26,7 @@
         <a style="font-weight:bold" href="@Html.DisplayFor(model => model.Links)"><b> Website</b></a><br />
         <b>Categories: </b> 
             @foreach (var item in Model.ListaDeCategorias) {
-                <a asp-controller="Categorias" asp-action="Details" asp-route-id="@item.IdCategoria">@item.NomeCategoria </a>
+                <a asp-controller="Categorias" asp-action="Details" asp-route-id="@item.IdCategoria" style="margin-right:5px;">@item.NomeCategoria</a>
             }
     </div>
     @if ((User.IsInRole("Cliente") || User.IsInRole("Admin"))) {
