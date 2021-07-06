@@ -46,6 +46,8 @@ namespace MidgetBee.Controllers
         // GET: Categorias/Create
         public IActionResult Create()
         {
+            // lista de todas as categorias existentes
+            ViewBag.ListaDeCategorias = _context.Categorias.OrderBy(c => c.NomeCategoria).ToList();
             return View();
         }
 
@@ -72,6 +74,9 @@ namespace MidgetBee.Controllers
             {
                 return NotFound();
             }
+
+            // lista de todas as categorias existentes
+            ViewBag.ListaDeCategorias = _context.Categorias.OrderBy(c => c.IdCategoria).ToList();
 
             var categorias = await _context.Categorias.FindAsync(id);
             if (categorias == null)

@@ -26,8 +26,7 @@ namespace MidgetBee.Controllers.API {
                                      Fotografia = j.Fotografia,
                                      IdAnime = j.IdAnime,
                                      Nome = j.Nome,
-                                     Rating = j.Rating,
-                                     Categoria = j.Categoria
+                                     Rating = j.Rating
                                  }
                                  )
                                  .OrderBy(j => j.IdAnime)

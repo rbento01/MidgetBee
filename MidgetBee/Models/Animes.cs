@@ -25,52 +25,56 @@ namespace MidgetBee.Models {
         /// <summary>
         /// Possui o Nome do anime
         /// </summary>
+        [Required]
         public string Nome { get; set; }
 
         /// <summary>
         /// Possui a Quantidade de Episodios
         /// </summary>
+        [Required]
         public string QuantEpisodios { get; set; }
 
         /// <summary>
         /// Possui o Rating do Anime
         /// </summary>
+        [Required]
         public double Rating { get; set; }
 
         /// <summary>
         /// Possui a Sinopse do Anime
         /// </summary>
+        [Required]
         public string Sinopse { get; set; }
 
         /// <summary>
         /// Possui o Nome do Autor
         /// </summary>
+        [Required]
         public string Autor { get; set; }
 
         /// <summary>
         /// Possui o Nome do Estudio
         /// </summary>
+        [Required]
         public string Estudio { get; set; }
 
         /// <summary>
         /// Possui o Valor do Ano
         /// </summary>
+        [Required]
         public string Data { get; set; }
 
         /// <summary>
         /// Possui o Link do Ano
         /// </summary>
+        [Required]
         public string Links { get; set; }
 
         /// <summary>
         /// Possui o caminho da foto em formato string
         /// </summary>
-        public string Fotografia { get; set; }
 
-        /// <summary>
-        /// Possui a Categoria do Anime
-        /// </summary>
-        public string Categoria { get; set; }
+        public string Fotografia { get; set; }
 
         /// <summary>
         /// Lista das Reviews associados aos Animes

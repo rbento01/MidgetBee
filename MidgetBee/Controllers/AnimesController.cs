@@ -196,22 +196,24 @@ namespace MidgetBee.Controllers {
             // adicionar a lista ao objeto de "Lesson"
             animes.ListaDeCategorias = listaDeCategoriasEscolhidas;
 
+            animes.Fotografia = imgFile.FileName;
+
+            //_webhost.WebRootPath vai ter o path para a pasta wwwroot
+            var saveimg = Path.Combine(_webhost.WebRootPath, "fotos", imgFile.FileName);
+
+            var imgext = Path.GetExtension(imgFile.FileName);
+
+            if (imgext == ".jpg" || imgext == ".png") {
+                using (var uploadimg = new FileStream(saveimg, FileMode.Create)) {
+                    await imgFile.CopyToAsync(uploadimg);
+                    
+                }
+            }
+
             if (ModelState.IsValid) {
                 _context.Add(animes);
+                await _context.SaveChangesAsync();
 
-                animes.Fotografia = imgFile.FileName;
-
-                //_webhost.WebRootPath vai ter o path para a pasta wwwroot
-                var saveimg = Path.Combine(_webhost.WebRootPath, "fotos", imgFile.FileName);
-
-                var imgext = Path.GetExtension(imgFile.FileName);
-
-                if (imgext == ".jpg" || imgext == ".png") {
-                    using (var uploadimg = new FileStream(saveimg, FileMode.Create)) {
-                        await imgFile.CopyToAsync(uploadimg);
-                        await _context.SaveChangesAsync();
-                    }
-                }
                 return RedirectToAction(nameof(Index));
 
             }
@@ -269,21 +271,20 @@ namespace MidgetBee.Controllers {
             // adicionar a lista ao objeto de "Lesson"
             animes.ListaDeCategorias = listaDeCategoriasEscolhidas;
 
+            animes.Fotografia = imgFile.FileName;
+            //_webhost.WebRootPath vai ter o path para a pasta wwwroot
+            var saveimg = Path.Combine(_webhost.WebRootPath, "fotos", imgFile.FileName);
+            var imgext = Path.GetExtension(imgFile.FileName);
+
+            if (imgext == ".jpg" || imgext == ".png") {
+                using (var uploadimg = new FileStream(saveimg, FileMode.Create)) {
+                    await imgFile.CopyToAsync(uploadimg);
+                }
+            }
             if (ModelState.IsValid) {
                 try {
                     _context.Update(animes);
-
-                    animes.Fotografia = imgFile.FileName;
-                    //_webhost.WebRootPath vai ter o path para a pasta wwwroot
-                    var saveimg = Path.Combine(_webhost.WebRootPath, "fotos", imgFile.FileName);
-                    var imgext = Path.GetExtension(imgFile.FileName);
-
-                    if (imgext == ".jpg" || imgext == ".png") {
-                        using (var uploadimg = new FileStream(saveimg, FileMode.Create)) {
-                            await imgFile.CopyToAsync(uploadimg);
-                            await _context.SaveChangesAsync();
-                        }
-                    }
+                        await _context.SaveChangesAsync();
                 } catch (DbUpdateConcurrencyException) {
                     if (!AnimesExists(animes.IdAnime)) {
                         return NotFound();

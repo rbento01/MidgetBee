@@ -58,11 +58,6 @@
                 <span asp-validation-for="Fotografia" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Categoria" class="control-label"></label>
-                <input asp-for="Categoria" class="form-control" />
-                <span asp-validation-for="Categoria" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label class="control-label">Categorias</label>
                 @foreach (Categorias item in ViewBag.ListaDeCategorias) {
             <br /> <input type="checkbox" value="@item.IdCategoria" name="CategoriaEscolhida" /> @item.NomeCategoria            

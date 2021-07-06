@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MidgetBee.Data;
 
 namespace MidgetBee.Migrations
 {
     [DbContext(typeof(AnimeDB))]
-    partial class AnimeDBModelSnapshot : ModelSnapshot
+    [Migration("20210706190416_Remocao_Atrib_Categorias")]
+    partial class Remocao_Atrib_Categorias
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

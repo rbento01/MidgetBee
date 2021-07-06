@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MidgetBee.Data;
 
 namespace MidgetBee.Migrations
 {
     [DbContext(typeof(AnimeDB))]
-    partial class AnimeDBModelSnapshot : ModelSnapshot
+    [Migration("20210706185839_Add_Required_Animes")]
+    partial class Add_Required_Animes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -64,14 +66,14 @@ namespace MidgetBee.Migrations
                         new
                         {
                             Id = "c",
-                            ConcurrencyStamp = "c522434a-b5ee-4b60-a490-96ba31bbbf59",
+                            ConcurrencyStamp = "235dc80d-a43e-4c05-9765-fa3514714871",
                             Name = "Cliente",
                             NormalizedName = "CLIENTE"
                         },
                         new
                         {
                             Id = "a",
-                            ConcurrencyStamp = "e6cf3c13-7df2-4762-a2fc-ca9311aad68e",
+                            ConcurrencyStamp = "371f3f60-ff3b-4c2e-9b58-a64b6b96b132",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -261,6 +263,10 @@ namespace MidgetBee.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Categoria")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Data")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -301,6 +307,7 @@ namespace MidgetBee.Migrations
                         {
                             IdAnime = 1,
                             Autor = "Masashi Kishimoto",
+                            Categoria = "Adventure, Fantasy, Comedy, Martial Arts",
                             Data = "3 de outubro, 2002 até 8 de fevereiro, 2007",
                             Estudio = "Studio Pierrot",
                             Fotografia = "Naruto.jpg",
@@ -314,6 +321,7 @@ namespace MidgetBee.Migrations
                         {
                             IdAnime = 2,
                             Autor = "Masashi Kishimoto",
+                            Categoria = "Adventure, Fantasy, Comedy, Martial Arts",
                             Data = "15 de fevereiro, 2007 até 23 de março, 2017",
                             Estudio = "Studio Pierrot",
                             Fotografia = "Naruto_Shippuden.png",
@@ -327,6 +335,7 @@ namespace MidgetBee.Migrations
                         {
                             IdAnime = 3,
                             Autor = "Masashi Kishimoto",
+                            Categoria = "Adventure, Fantasy, Comedy, Martial Arts",
                             Data = "5 de abril até ?",
                             Estudio = "Studio Pierrot",
                             Fotografia = "Boruto.jpg",
@@ -340,6 +349,7 @@ namespace MidgetBee.Migrations
                         {
                             IdAnime = 4,
                             Autor = "Tite Kubo",
+                            Categoria = "Adventure, ‎Supernatural",
                             Data = "5 de outubro, 2004 até 27 de março, 2012",
                             Estudio = "Studio Pierrot",
                             Fotografia = "bleach.jpg",
@@ -353,6 +363,7 @@ namespace MidgetBee.Migrations
                         {
                             IdAnime = 5,
                             Autor = "Eichiro Oda",
+                            Categoria = "Adventure, Fantasy, Comedy",
                             Data = "20 outubro, 1999 até ?",
                             Estudio = "Toei Animation",
                             Fotografia = "One_Piece.png",
@@ -366,6 +377,7 @@ namespace MidgetBee.Migrations
                         {
                             IdAnime = 6,
                             Autor = "Akira Toriyama",
+                            Categoria = "Action, Comedy,Drama,Adventure,Martial Arts,Adventure Fiction",
                             Data = "26 de abril, 1989 até 31 de janeiro, 1996",
                             Estudio = "Toei Animation",
                             Fotografia = "Dragon_Ball_Z.jpg",
@@ -379,6 +391,7 @@ namespace MidgetBee.Migrations
                         {
                             IdAnime = 7,
                             Autor = "Akira Toriyama",
+                            Categoria = "Action, Comedy,Drama,Adventure,Martial Arts,Adventure Fiction",
                             Data = "5 de julho, 2015 até 25 de março, 2018",
                             Estudio = "Toei Animation",
                             Fotografia = "Dragon_Ball_Super.jpg",
@@ -392,6 +405,7 @@ namespace MidgetBee.Migrations
                         {
                             IdAnime = 8,
                             Autor = "Hajime Isayama",
+                            Categoria = "Action, Dark Fantasy, Post-Apocalyptic",
                             Data = "7 de abril, 2013 até ?",
                             Estudio = "Wit Studio//MAPPA ",
                             Fotografia = "Attack_On_Titan.jpg",
@@ -405,6 +419,7 @@ namespace MidgetBee.Migrations
                         {
                             IdAnime = 9,
                             Autor = "Kōhei Horikoshi",
+                            Categoria = "Adventure, Fantasy, Superhero",
                             Data = "3 de abril, 2016 até ?",
                             Estudio = "Bones",
                             Fotografia = "Boku_No_Hero.jpg",
@@ -418,6 +433,7 @@ namespace MidgetBee.Migrations
                         {
                             IdAnime = 10,
                             Autor = "Gege Akutami",
+                            Categoria = "Adventure Fiction, Supernatural Fiction, Dark Fantasy",
                             Data = "3 de outubro,2020 até ?",
                             Estudio = "MAPPA",
                             Fotografia = "Jujutsu_Kaisen.png",
@@ -431,6 +447,7 @@ namespace MidgetBee.Migrations
                         {
                             IdAnime = 11,
                             Autor = "Koyoharu Gotouge",
+                            Categoria = "Action, Demons, Historical, Shounen, Supernatural",
                             Data = "6 de abril de 2019",
                             Estudio = "ufotable",
                             Fotografia = "Demon_Slayer.jpg",
@@ -444,6 +461,7 @@ namespace MidgetBee.Migrations
                         {
                             IdAnime = 12,
                             Autor = "Mika Nomura",
+                            Categoria = "Psychological Thriller, Science Fiction",
                             Data = "6 de abril, 2011 até 27 de setembro,2018",
                             Estudio = "White Fox",
                             Fotografia = "Steins_Gate.jpg",
@@ -457,6 +475,7 @@ namespace MidgetBee.Migrations
                         {
                             IdAnime = 13,
                             Autor = "Rui Tsukiyo",
+                            Categoria = "Adventure, Harem, Drama, Magic, Ecchi, Fantasy",
                             Data = "13 de janeiro",
                             Estudio = "TNK",
                             Fotografia = "Redo_of_Healer.jpg",
@@ -470,6 +489,7 @@ namespace MidgetBee.Migrations
                         {
                             IdAnime = 14,
                             Autor = "Tsugumi Ohba",
+                            Categoria = "Mystery, Suspense, Psychological Suspense",
                             Data = "4 de outubro,2006 até 27 de junho, 2007",
                             Estudio = "Madhouse",
                             Fotografia = "Death_Note.jpg",
@@ -483,6 +503,7 @@ namespace MidgetBee.Migrations
                         {
                             IdAnime = 15,
                             Autor = "Yoshihiro Togashi",
+                            Categoria = "Adventure Fiction, Martial Arts, Fantasy",
                             Data = "2 de outubro, 2011 até 24 de setembro, 2014",
                             Estudio = "Nippon Animation",
                             Fotografia = "hunter_x_hunter.jpg",
@@ -496,6 +517,7 @@ namespace MidgetBee.Migrations
                         {
                             IdAnime = 16,
                             Autor = "Nakaba Suzuki",
+                            Categoria = "Adventure Fiction",
                             Data = "10 de outubro, 2012 até ?",
                             Estudio = "A-1 Pictures",
                             Fotografia = "seven_deadly_sins.jpg",
@@ -509,6 +531,7 @@ namespace MidgetBee.Migrations
                         {
                             IdAnime = 17,
                             Autor = "Haruichi Furudate",
+                            Categoria = "Comedy, Sports",
                             Data = "6 de abril 2014 até ?",
                             Estudio = "Production I.G",
                             Fotografia = "Haikyuu.png",
@@ -522,6 +545,7 @@ namespace MidgetBee.Migrations
                         {
                             IdAnime = 18,
                             Autor = "Gorō Taniguchi",
+                            Categoria = "Action, Mecha, Adventure, Suspense, Military Fiction",
                             Data = "6 de outubro, 2006 até 28 de setembro, 2008",
                             Estudio = "Sunrise",
                             Fotografia = "Code_Geass.jpg",
@@ -535,6 +559,7 @@ namespace MidgetBee.Migrations
                         {
                             IdAnime = 19,
                             Autor = "Hiro Mashima",
+                            Categoria = "Fantasy, Adventure Fiction",
                             Data = "12 de outubro, 2009 até 29 de setembro, 2019",
                             Estudio = "Satelight//A-1 Pictures",
                             Fotografia = "fairy_tail.jpg",
@@ -548,6 +573,7 @@ namespace MidgetBee.Migrations
                         {
                             IdAnime = 20,
                             Autor = "Yuki Tabata",
+                            Categoria = "Adventure, Fantasy, Comedy, Action",
                             Data = "3 de outubro,2017 até ?",
                             Estudio = "Studio Pierrot",
                             Fotografia = "Black_Clover.jpg",
@@ -561,6 +587,7 @@ namespace MidgetBee.Migrations
                         {
                             IdAnime = 21,
                             Autor = "Boichi",
+                            Categoria = "Adventure, Post-Apocalyptic, Science Fiction, Comedy",
                             Data = "5 de julho, 2019 até ?",
                             Estudio = "TMS Entertainment",
                             Fotografia = "Dr_Stone.jpg",
@@ -574,6 +601,7 @@ namespace MidgetBee.Migrations
                         {
                             IdAnime = 22,
                             Autor = "Junichi Masuda",
+                            Categoria = "Adventure, Comedy, Drama, Action, Science Fiction, Suspense",
                             Data = "1 de abril 1997 até 14 de novembro de 2002",
                             Estudio = "OLM",
                             Fotografia = "pokemon.jpg",
@@ -587,6 +615,7 @@ namespace MidgetBee.Migrations
                         {
                             IdAnime = 23,
                             Autor = "Negi Haruba",
+                            Categoria = "Harem, Romantic Comedy",
                             Data = "8 de janeiro, 2021 até ?",
                             Estudio = "Bibury Animation Studios",
                             Fotografia = "Quint_Quint.jpg",
@@ -600,6 +629,7 @@ namespace MidgetBee.Migrations
                         {
                             IdAnime = 24,
                             Autor = "Code:000",
+                            Categoria = "Romance, Science Fiction, Mecha",
                             Data = "13 de janeiro, 2018 até 7 de julho, 2018",
                             Estudio = "A -1 Pictures//Trigger//CloverWorks",
                             Fotografia = "Darling_Franxx.jpg",
@@ -613,6 +643,7 @@ namespace MidgetBee.Migrations
                         {
                             IdAnime = 25,
                             Autor = "Sui Ishida",
+                            Categoria = "Dark Fantasy, Suspense, Horror, Thriller, Gore, Supernatural, Action",
                             Data = "4 de julho, 2014 até 19 de junho, 2018",
                             Estudio = "Studio Pierrot",
                             Fotografia = "Tokyo_Ghoul.jpg",
@@ -626,6 +657,7 @@ namespace MidgetBee.Migrations
                         {
                             IdAnime = 26,
                             Autor = "Sango Harukawa",
+                            Categoria = "Action, Adventure, Fantasy",
                             Data = "7 de abril de 2016 até 8 de agosto, 2020",
                             Estudio = "Bones",
                             Fotografia = "BSD.png",
@@ -639,6 +671,7 @@ namespace MidgetBee.Migrations
                         {
                             IdAnime = 27,
                             Autor = "Hiromu Arakawa",
+                            Categoria = "Action, Military, Adventure, Comedy, Drama, Magic, Fantasy, Shounen",
                             Data = "5 de abril, 2009 até 4 de julho, 2010",
                             Estudio = "Bones",
                             Fotografia = "fma.jpg",
@@ -652,6 +685,7 @@ namespace MidgetBee.Migrations
                         {
                             IdAnime = 28,
                             Autor = "Yuu Kamiya",
+                            Categoria = "Game, Adventure, Comedy, Supernatural, Ecchi, Fantasy",
                             Data = "9 de abril, 2014 até 25 de junho 2014",
                             Estudio = "Madhouse",
                             Fotografia = "NGNL.png",
@@ -665,6 +699,7 @@ namespace MidgetBee.Migrations
                         {
                             IdAnime = 29,
                             Autor = "Makoto Yukimura",
+                            Categoria = "Action, Adventure, Drama, Historical, Seinen",
                             Data = "8 de julho, 2019 até ?",
                             Estudio = "Wit Studio",
                             Fotografia = "vinsaga.jpg",
@@ -678,6 +713,7 @@ namespace MidgetBee.Migrations
                         {
                             IdAnime = 30,
                             Autor = "Yuto Tsukuda",
+                            Categoria = "Ecchi, School, Shounen",
                             Data = "4 de abril de 2015 até 26 de setembro, 2020",
                             Estudio = "J.C.Staff",
                             Fotografia = "FoodWars.jpg",
