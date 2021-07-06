@@ -8,7 +8,7 @@ namespace MidgetBee.Migrations {
                 columns: table => new {
                     IdCategoria = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    nomeCategoria = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    NomeCategoria = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table => {
                     table.PrimaryKey("PK_Categorias", x => x.IdCategoria);

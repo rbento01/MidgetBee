@@ -18,7 +18,8 @@ namespace MidgetBee.Controllers {
 
         // GET: Favoritos
         public async Task<IActionResult> Index() {
-            var animeDB = _context.Favoritos.Include(f => f.Anime).Include(f => f.Utilizador);
+            var animeDB = _context.Favoritos.Include(f => f.Anime)
+                                            .Include(f => f.Utilizador);
             return View(await animeDB.ToListAsync());
         }
 

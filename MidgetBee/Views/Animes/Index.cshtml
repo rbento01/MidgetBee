@@ -4,6 +4,12 @@
     ViewData["Title"] = "Index";
 }
 
+@if (User.IsInRole("Admin")) {
+    <p>
+        <a class="btn btn-primary" style="margin-left: 50px;" asp-action="Create">Create New</a>
+    </p>
+}
+
 <head style="background-color: lightgrey;">
     <link rel="stylesheet" href="~/css/AnimesView.css" />
 </head>
@@ -18,7 +24,7 @@
                 @*Coloca a foto do anime*@
                 <img class="fotoAnime" src="~/fotos/@Html.DisplayFor(modelItem => item.Fotografia)" />
 
-                
+
 
                 @*div para ajudar a fazer o hover e tornar a página mais apresentável*@
                 <div class="overlay">

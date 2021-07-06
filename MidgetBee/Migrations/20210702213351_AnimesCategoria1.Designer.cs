@@ -1006,7 +1006,7 @@ namespace MidgetBee.Migrations {
                     .HasColumnType("int")
                     .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                b.Property<string>("nomeCategoria")
+                b.Property<string>("NomeCategoria")
                     .HasColumnType("nvarchar(max)");
 
                 b.HasKey("IdCategoria");
@@ -1016,43 +1016,43 @@ namespace MidgetBee.Migrations {
                 b.HasData(
                     new {
                         IdCategoria = 1,
-                        nomeCategoria = "Action"
+                        NomeCategoria = "Action"
                     },
                     new {
                         IdCategoria = 2,
-                        nomeCategoria = "Comedy"
+                        NomeCategoria = "Comedy"
                     },
                     new {
                         IdCategoria = 3,
-                        nomeCategoria = "Love"
+                        NomeCategoria = "Love"
                     },
                     new {
                         IdCategoria = 4,
-                        nomeCategoria = "Historical"
+                        NomeCategoria = "Historical"
                     },
                     new {
                         IdCategoria = 5,
-                        nomeCategoria = "Adventure"
+                        NomeCategoria = "Adventure"
                     },
                     new {
                         IdCategoria = 6,
-                        nomeCategoria = "Shounen"
+                        NomeCategoria = "Shounen"
                     },
                     new {
                         IdCategoria = 7,
-                        nomeCategoria = "Supernatural"
+                        NomeCategoria = "Supernatural"
                     },
                     new {
                         IdCategoria = 8,
-                        nomeCategoria = "Terror"
+                        NomeCategoria = "Terror"
                     },
                     new {
                         IdCategoria = 9,
-                        nomeCategoria = "Drama"
+                        NomeCategoria = "Drama"
                     },
                     new {
                         IdCategoria = 10,
-                        nomeCategoria = "Ecchi"
+                        NomeCategoria = "Ecchi"
                     });
             });
 

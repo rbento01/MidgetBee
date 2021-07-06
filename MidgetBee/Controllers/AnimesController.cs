@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Hosting;
 using System.IO;
+using System.Collections.Generic;
 
 namespace MidgetBee.Controllers {
     public class AnimesController : Controller {
@@ -72,6 +73,8 @@ namespace MidgetBee.Controllers {
                     ViewBag.Favorito = true;
                 }
             }
+
+            
 
             return View(anime);
         }
@@ -156,6 +159,9 @@ namespace MidgetBee.Controllers {
 
         // GET: Animes/Create
         public IActionResult Create() {
+            // lista de todas as categorias existentes
+            ViewBag.ListaDeCategorias = _context.Categorias.OrderBy(c => c.NomeCategoria).ToList();
+
             return View();
         }
 
@@ -164,7 +170,31 @@ namespace MidgetBee.Controllers {
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdAnime,Nome,QuantEpisodios,Rating,Sinopse,Autor,Estudio,Data,Links,Fotografia,Categoria")] Animes animes, IFormFile imgFile) {
+        public async Task<IActionResult> Create([Bind("IdAnime,Nome,QuantEpisodios,Rating,Sinopse,Autor,Estudio,Data,Links,Fotografia,Categoria")] Animes animes, IFormFile imgFile, int[] CategoriaEscolhida) {
+            
+            // avalia se o array com a lista de categorias escolhidas associadas à aula está vazio ou não
+            if (CategoriaEscolhida.Length == 0) {
+                //É gerada uma mensagem de erro
+                ModelState.AddModelError("", "É necessário selecionar pelo menos uma categoria.");
+                // gerar a lista Categorias que podem ser associadas à aula
+                ViewBag.ListaDeCategorias = _context.Categorias.OrderBy(c => c.NomeCategoria).ToList();
+                // devolver controlo à View
+                return View(animes);
+            }
+
+            // criar uma lista com os objetos escolhidos das Categorias
+            List<Categorias> listaDeCategoriasEscolhidas = new List<Categorias>();
+            // Para cada objeto escolhido..
+            foreach (int item in CategoriaEscolhida) {
+                //procurar a categoria
+                Categorias Categoria = _context.Categorias.Find(item);
+                // adicionar a Categoria à lista
+                listaDeCategoriasEscolhidas.Add(Categoria);
+            }
+
+            // adicionar a lista ao objeto de "Lesson"
+            animes.ListaDeCategorias = listaDeCategoriasEscolhidas;
+
             if (ModelState.IsValid) {
                 _context.Add(animes);
 

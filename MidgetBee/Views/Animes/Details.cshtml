@@ -24,7 +24,10 @@
         <b>Studio: </b> @Html.DisplayFor(model => model.Estudio)<br />
         <b>Aired: </b> @Html.DisplayFor(model => model.Data)<br />
         <a style="font-weight:bold" href="@Html.DisplayFor(model => model.Links)"><b> Website</b></a><br />
-        <b>Categories: </b> @Html.DisplayFor(model => model.Categoria)<br /><br />
+        <b>Categories: </b> 
+            @foreach (var item in Model.ListaDeCategorias) {
+                <a asp-controller="Categorias" asp-action="Details" asp-route-id="@item.IdCategoria">@item.NomeCategoria </a>
+            }
     </div>
     @if ((User.IsInRole("Cliente") || User.IsInRole("Admin"))) {
         <div class="form-group">
@@ -39,48 +42,49 @@
             </form>
         </div>
     }
-        <div class="form-group">
-            <b>Synopsis:</b>@Html.DisplayFor(model => model.Sinopse)<br /><br />
-        </div>
-        <div id="comentarios">
-            @foreach (var item in Model.ListaDeReviews) {
-                @if (@item.Visibilidade == true) {
-                    <div style="background-color:lightblue; border:3px solid black; padding:2px 10px 2px 5px">
-                        <span><b>User:</b> @item.Utilizador.Email</span>
-                        <span style="float:right; "> <b>Rating:</b> @item.Rating</span>
-                        @if (User.IsInRole("Admin")) {
-                            <button class="btn btn-primary" style="height:39px; margin-left:10px;" onclick="location.href = '@Url.Action("Edit", "Reviews", new { id = item.IdReview })'">Esconder</button>
-                        }
-                        @if ((User.IsInRole("Cliente") || User.IsInRole("Admin")) && item.Utilizador.Email == User.Identity.Name) {
-                            <button class="btn btn-primary" style="height: 39px; margin-left: 10px;" onclick="location.href = '@Url.Action("Edit", "Reviews", new { id = item.IdReview })'">Editar</button>
-                            <button class="btn btn-danger" style="height: 39px; margin-left: 10px;" onclick="location.href = '@Url.Action("Delete", "Reviews", new { id = item.IdReview })'">Apagar</button>
-                        }
-                        <br />
-                        <span><b>Comentário:</b> @Html.Raw(item.Comentario)</span>
-                    </div>
-                    <br />
-                }
-
-            }
-        </div>
-        @if (User.Identity.IsAuthenticated) {
-            <div>
-                @*  se não adicionarmos o atributo
-                             enctype="multipart/form-data"
-                    não conseguimos enviar os ficheiros para o servidor *@
-                <form asp-action="CreateComentario">
-                    <input type="hidden" name="animeID" value="@Model.IdAnime" />
-                    <span>Rating: </span><input required type="number" name="rating" min="1" max="10" text-align:center" maxlength="2" placeholder="1 a 10"><br /><br />
-                    <span>Comentário: </span><br />
-
-                    <textarea required name="comentario" style="resize:none; width:1100px; height:100px;"></textarea><br />
-                    <input type="submit" value="Add Comment" class="btn btn-primary" />
-                </form>
-            </div>
-        }
-
-
+    <br />
+    <div class="form-group" style="text-align:justify;">
+        <b>Synopsis: </b>@Html.DisplayFor(model => model.Sinopse)<br /><br />
     </div>
+    <div id="comentarios">
+        @foreach (var item in Model.ListaDeReviews) {
+            @if (@item.Visibilidade == true) {
+                <div style="background-color:lightblue; border:3px solid black; padding:2px 10px 2px 5px">
+                    <span><b>User:</b> @item.Utilizador.Email</span>
+                    <span style="float:right; "> <b>Rating:</b> @item.Rating</span>
+                    @if (User.IsInRole("Admin")) {
+                        <button class="btn btn-primary" style="height:39px; margin-left:10px;" onclick="location.href = '@Url.Action("Edit", "Reviews", new { id = item.IdReview })'">Esconder</button>
+                    }
+                    @if ((User.IsInRole("Cliente") || User.IsInRole("Admin")) && item.Utilizador.Email == User.Identity.Name) {
+                        <button class="btn btn-primary" style="height: 39px; margin-left: 10px;" onclick="location.href = '@Url.Action("Edit", "Reviews", new { id = item.IdReview })'">Editar</button>
+                        <button class="btn btn-danger" style="height: 39px; margin-left: 10px;" onclick="location.href = '@Url.Action("Delete", "Reviews", new { id = item.IdReview })'">Apagar</button>
+                    }
+                    <br />
+                    <span><b>Comentário:</b> @Html.Raw(item.Comentario)</span>
+                </div>
+                <br />
+            }
+
+        }
+    </div>
+    @if (User.Identity.IsAuthenticated) {
+        <div>
+            @*  se não adicionarmos o atributo
+                         enctype="multipart/form-data"
+                não conseguimos enviar os ficheiros para o servidor *@
+            <form asp-action="CreateComentario">
+                <input type="hidden" name="animeID" value="@Model.IdAnime" />
+                <span><b>Rating: </b></span><input required type="number" name="rating" min="1" max="10" text-align:center" maxlength="2" placeholder="1 a 10"><br /><br />
+                <span><b>Comentário: </b></span><br />
+
+                <textarea required name="comentario" style="resize:none; width:1100px; height:100px;"></textarea><br />
+                <input type="submit" value="Add Comment" class="btn btn-primary" />
+            </form>
+        </div>
+    }
+
+
+</div>
 <div>
     <br />
     @if (User.IsInRole("Admin")) {

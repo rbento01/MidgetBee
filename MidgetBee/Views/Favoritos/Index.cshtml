@@ -5,37 +5,27 @@
 }
 
 <h1>Favoritos</h1>
-@if (User.IsInRole("Admin")) {
-    <p>
-        <a asp-action="Create">Create New</a>
-    </p>
-}
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Anime.Fotografia)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model) {
-            if (item.Utilizador.Email == User.Identity.Name) {
-                <tr>
-                    <td>
-                        <img style="width: 200px; height: 250px; border: 4px solid black; object-fit: fill;" src="~/fotos/@Html.DisplayFor(modelItem => item.Anime.Fotografia)" alt="Foto Anime" />
-                    </td>
-                    @if (User.IsInRole("Admin")) {
-                        <td>
-                            <a asp-action="Edit" asp-route-id="@item.IdFavoritos">Edit</a> |
-                            <a asp-action="Details" asp-route-id="@item.IdFavoritos">Details</a> |
-                            <a asp-action="Delete" asp-route-id="@item.IdFavoritos">Delete</a>
-                        </td>
-                    }
-                </tr>
-            }
-        }
-    </tbody>
-</table>
+<br />
+
+@foreach (var item in Model) {
+    if (item.Utilizador.Email == User.Identity.Name) {
+        @*cada anime vai ter o seu próprio div*@
+        <div class="Anime">
+            @*Caso o user clique o razor envia para a página dos Details do Anime em questão*@
+            <a asp-action="Details" asp-controller="Animes" asp-route-id="@item.Anime.IdAnime">
+                @*Coloca a foto do anime*@
+                <img class="fotoAnime" style="position:absolute;" src="~/fotos/@Html.DisplayFor(modelItem => item.Anime.Fotografia)" />
+
+                @*div para ajudar a fazer o hover e tornar a página mais apresentável*@
+                <div class="overlay">
+                    <div class="text">
+                        @*Coloca o texto no meio do div*@
+                        @Html.DisplayFor(modelItem => item.Anime.Nome)
+                    </div>
+                </div>
+            </a>
+        </div>
+
+    }
+}

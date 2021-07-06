@@ -85,80 +85,16 @@ namespace MidgetBee.Data {
             );
 
             modelBuilder.Entity<Categorias>().HasData(
-                new Categorias { IdCategoria = 1, nomeCategoria = "Action" },
-                new Categorias { IdCategoria = 2, nomeCategoria = "Comedy" },
-                new Categorias { IdCategoria = 3, nomeCategoria = "Love" },
-                new Categorias { IdCategoria = 4, nomeCategoria = "Historical" },
-                new Categorias { IdCategoria = 5, nomeCategoria = "Adventure" },
-                new Categorias { IdCategoria = 6, nomeCategoria = "Shounen" },
-                new Categorias { IdCategoria = 7, nomeCategoria = "Supernatural" },
-                new Categorias { IdCategoria = 8, nomeCategoria = "Terror" },
-                new Categorias { IdCategoria = 9, nomeCategoria = "Drama" },
-                new Categorias { IdCategoria = 10, nomeCategoria = "Ecchi" }
-            );
-
-            modelBuilder.Entity<AnimesCategoria>().HasData(
-                new AnimesCategoria { idAnimesCategoria = 1, AnimesFK = 1, CategoriaFK = 1 },
-                new AnimesCategoria { idAnimesCategoria = 2, AnimesFK = 1, CategoriaFK = 2 },
-                new AnimesCategoria { idAnimesCategoria = 3, AnimesFK = 2, CategoriaFK = 2 },
-                new AnimesCategoria { idAnimesCategoria = 4, AnimesFK = 2, CategoriaFK = 3 },
-                new AnimesCategoria { idAnimesCategoria = 5, AnimesFK = 3, CategoriaFK = 3 },
-                new AnimesCategoria { idAnimesCategoria = 6, AnimesFK = 3, CategoriaFK = 4 },
-                new AnimesCategoria { idAnimesCategoria = 7, AnimesFK = 4, CategoriaFK = 4 },
-                new AnimesCategoria { idAnimesCategoria = 8, AnimesFK = 4, CategoriaFK = 5 },
-                new AnimesCategoria { idAnimesCategoria = 9, AnimesFK = 5, CategoriaFK = 5 },
-                new AnimesCategoria { idAnimesCategoria = 10, AnimesFK = 5, CategoriaFK = 6 },
-                new AnimesCategoria { idAnimesCategoria = 11, AnimesFK = 6, CategoriaFK = 6 },
-                new AnimesCategoria { idAnimesCategoria = 12, AnimesFK = 6, CategoriaFK = 7 },
-                new AnimesCategoria { idAnimesCategoria = 13, AnimesFK = 7, CategoriaFK = 7 },
-                new AnimesCategoria { idAnimesCategoria = 14, AnimesFK = 7, CategoriaFK = 8 },
-                new AnimesCategoria { idAnimesCategoria = 15, AnimesFK = 8, CategoriaFK = 8 },
-                new AnimesCategoria { idAnimesCategoria = 16, AnimesFK = 8, CategoriaFK = 9 },
-                new AnimesCategoria { idAnimesCategoria = 17, AnimesFK = 9, CategoriaFK = 9 },
-                new AnimesCategoria { idAnimesCategoria = 18, AnimesFK = 9, CategoriaFK = 10 },
-                new AnimesCategoria { idAnimesCategoria = 19, AnimesFK = 10, CategoriaFK = 10 },
-                new AnimesCategoria { idAnimesCategoria = 20, AnimesFK = 10, CategoriaFK = 1 },
-                new AnimesCategoria { idAnimesCategoria = 21, AnimesFK = 11, CategoriaFK = 1 },
-                new AnimesCategoria { idAnimesCategoria = 22, AnimesFK = 11, CategoriaFK = 2 },
-                new AnimesCategoria { idAnimesCategoria = 23, AnimesFK = 12, CategoriaFK = 2 },
-                new AnimesCategoria { idAnimesCategoria = 24, AnimesFK = 12, CategoriaFK = 3 },
-                new AnimesCategoria { idAnimesCategoria = 25, AnimesFK = 13, CategoriaFK = 3 },
-                new AnimesCategoria { idAnimesCategoria = 26, AnimesFK = 13, CategoriaFK = 4 },
-                new AnimesCategoria { idAnimesCategoria = 27, AnimesFK = 14, CategoriaFK = 4 },
-                new AnimesCategoria { idAnimesCategoria = 28, AnimesFK = 14, CategoriaFK = 5 },
-                new AnimesCategoria { idAnimesCategoria = 29, AnimesFK = 15, CategoriaFK = 5 },
-                new AnimesCategoria { idAnimesCategoria = 30, AnimesFK = 15, CategoriaFK = 6 },
-                new AnimesCategoria { idAnimesCategoria = 31, AnimesFK = 16, CategoriaFK = 6 },
-                new AnimesCategoria { idAnimesCategoria = 32, AnimesFK = 16, CategoriaFK = 7 },
-                new AnimesCategoria { idAnimesCategoria = 33, AnimesFK = 17, CategoriaFK = 7 },
-                new AnimesCategoria { idAnimesCategoria = 34, AnimesFK = 17, CategoriaFK = 8 },
-                new AnimesCategoria { idAnimesCategoria = 35, AnimesFK = 18, CategoriaFK = 8 },
-                new AnimesCategoria { idAnimesCategoria = 36, AnimesFK = 18, CategoriaFK = 9 },
-                new AnimesCategoria { idAnimesCategoria = 37, AnimesFK = 19, CategoriaFK = 9 },
-                new AnimesCategoria { idAnimesCategoria = 38, AnimesFK = 19, CategoriaFK = 10 },
-                new AnimesCategoria { idAnimesCategoria = 39, AnimesFK = 20, CategoriaFK = 10 },
-                new AnimesCategoria { idAnimesCategoria = 40, AnimesFK = 20, CategoriaFK = 1 },
-                new AnimesCategoria { idAnimesCategoria = 41, AnimesFK = 20, CategoriaFK = 2 },
-                new AnimesCategoria { idAnimesCategoria = 42, AnimesFK = 21, CategoriaFK = 1 },
-                new AnimesCategoria { idAnimesCategoria = 43, AnimesFK = 21, CategoriaFK = 2 },
-                new AnimesCategoria { idAnimesCategoria = 44, AnimesFK = 22, CategoriaFK = 2 },
-                new AnimesCategoria { idAnimesCategoria = 45, AnimesFK = 22, CategoriaFK = 3 },
-                new AnimesCategoria { idAnimesCategoria = 46, AnimesFK = 23, CategoriaFK = 3 },
-                new AnimesCategoria { idAnimesCategoria = 47, AnimesFK = 23, CategoriaFK = 4 },
-                new AnimesCategoria { idAnimesCategoria = 48, AnimesFK = 24, CategoriaFK = 4 },
-                new AnimesCategoria { idAnimesCategoria = 49, AnimesFK = 24, CategoriaFK = 5 },
-                new AnimesCategoria { idAnimesCategoria = 50, AnimesFK = 25, CategoriaFK = 5 },
-                new AnimesCategoria { idAnimesCategoria = 51, AnimesFK = 25, CategoriaFK = 6 },
-                new AnimesCategoria { idAnimesCategoria = 52, AnimesFK = 26, CategoriaFK = 6 },
-                new AnimesCategoria { idAnimesCategoria = 53, AnimesFK = 26, CategoriaFK = 7 },
-                new AnimesCategoria { idAnimesCategoria = 54, AnimesFK = 27, CategoriaFK = 7 },
-                new AnimesCategoria { idAnimesCategoria = 55, AnimesFK = 27, CategoriaFK = 8 },
-                new AnimesCategoria { idAnimesCategoria = 56, AnimesFK = 28, CategoriaFK = 8 },
-                new AnimesCategoria { idAnimesCategoria = 57, AnimesFK = 28, CategoriaFK = 9 },
-                new AnimesCategoria { idAnimesCategoria = 58, AnimesFK = 29, CategoriaFK = 9 },
-                new AnimesCategoria { idAnimesCategoria = 59, AnimesFK = 29, CategoriaFK = 10 },
-                new AnimesCategoria { idAnimesCategoria = 60, AnimesFK = 30, CategoriaFK = 10 },
-                new AnimesCategoria { idAnimesCategoria = 61, AnimesFK = 30, CategoriaFK = 1 }
+                new Categorias { IdCategoria = 1, NomeCategoria = "Action" },
+                new Categorias { IdCategoria = 2, NomeCategoria = "Comedy" },
+                new Categorias { IdCategoria = 3, NomeCategoria = "Love" },
+                new Categorias { IdCategoria = 4, NomeCategoria = "Historical" },
+                new Categorias { IdCategoria = 5, NomeCategoria = "Adventure" },
+                new Categorias { IdCategoria = 6, NomeCategoria = "Shounen" },
+                new Categorias { IdCategoria = 7, NomeCategoria = "Supernatural" },
+                new Categorias { IdCategoria = 8, NomeCategoria = "Terror" },
+                new Categorias { IdCategoria = 9, NomeCategoria = "Drama" },
+                new Categorias { IdCategoria = 10, NomeCategoria = "Ecchi" }
             );
 
         }
@@ -168,7 +104,7 @@ namespace MidgetBee.Data {
         public DbSet<Reviews> Reviews { get; set; }
         public DbSet<Favoritos> Favoritos { get; set; }
         public DbSet<Categorias> Categorias { get; set; }
-        public DbSet<MidgetBee.Models.AnimesCategoria> AnimesCategoria { get; set; }
+       
 
     }
 }

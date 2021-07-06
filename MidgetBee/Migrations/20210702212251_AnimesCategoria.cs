@@ -43,7 +43,7 @@ namespace MidgetBee.Migrations {
 
             migrationBuilder.InsertData(
                 table: "Categorias",
-                columns: new[] { "IdCategoria", "nomeCategoria" },
+                columns: new[] { "IdCategoria", "NomeCategoria" },
                 values: new object[,]
                 {
                     { 1, "Action" },

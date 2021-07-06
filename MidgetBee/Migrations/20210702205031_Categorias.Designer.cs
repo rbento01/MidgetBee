@@ -678,7 +678,7 @@ namespace MidgetBee.Migrations {
                     .HasColumnType("int")
                     .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                b.Property<string>("nomeCategoria")
+                b.Property<string>("NomeCategoria")
                     .HasColumnType("nvarchar(max)");
 
                 b.HasKey("IdCategoria");

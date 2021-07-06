@@ -22,7 +22,7 @@ namespace MidgetBee.Models {
         /// <summary>
         /// Vai possuir o nome do categoria
         /// </summary>
-        public string nomeCategoria { get; set; }
+        public string NomeCategoria { get; set; }
 
         /// <summary>
         /// Vai ter a ligação entre animes e categorias
