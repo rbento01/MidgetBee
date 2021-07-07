@@ -23,6 +23,11 @@
                     <input asp-for="Comentario" class="form-control" />
                     <span asp-validation-for="Comentario" class="text-danger"></span>
                 </div>
+                <div class="form-group">
+                    <label asp-for="Rating" class="control-label"></label>
+                    <input asp-for="Rating" class="form-control" />
+                    <span asp-validation-for="Rating" class="text-danger"></span>
+                </div>
             } else if (User.IsInRole("Cliente")) {
                 <input type="hidden" asp-for="IdReview" />
                 <div class="form-group form-check">

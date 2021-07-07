@@ -193,7 +193,7 @@ namespace MidgetBee.Controllers {
                 listaDeCategoriasEscolhidas.Add(Categoria);
             }
 
-            // adicionar a lista ao objeto de "Lesson"
+            // adicionar a lista ao objeto de "Animes"
             animes.ListaDeCategorias = listaDeCategoriasEscolhidas;
 
             animes.Fotografia = imgFile.FileName;
@@ -243,7 +243,6 @@ namespace MidgetBee.Controllers {
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("IdAnime,Nome,QuantEpisodios,Rating,Sinopse,Autor,Estudio,Data,Links,Fotografia,Categoria")] Animes animes, IFormFile imgFile, int[] CategoriaEscolhida) {
 
-
             if (id != animes.IdAnime) {
                 return NotFound();
             }
@@ -268,19 +267,31 @@ namespace MidgetBee.Controllers {
                 listaDeCategoriasEscolhidas.Add(Categoria);
             }
 
-            // adicionar a lista ao objeto de "Lesson"
+            // adicionar a lista ao objeto de "Animes"
             animes.ListaDeCategorias = listaDeCategoriasEscolhidas;
 
-            animes.Fotografia = imgFile.FileName;
-            //_webhost.WebRootPath vai ter o path para a pasta wwwroot
-            var saveimg = Path.Combine(_webhost.WebRootPath, "fotos", imgFile.FileName);
-            var imgext = Path.GetExtension(imgFile.FileName);
+            if (imgFile != null) {
+                animes.Fotografia = imgFile.FileName;
+                //_webhost.WebRootPath vai ter o path para a pasta wwwroot
+                var saveimg = Path.Combine(_webhost.WebRootPath, "fotos", imgFile.FileName);
+                var imgext = Path.GetExtension(imgFile.FileName);
 
-            if (imgext == ".jpg" || imgext == ".png") {
-                using (var uploadimg = new FileStream(saveimg, FileMode.Create)) {
-                    await imgFile.CopyToAsync(uploadimg);
+                if (imgext == ".jpg" || imgext == ".png") {
+                    using (var uploadimg = new FileStream(saveimg, FileMode.Create)) {
+                        await imgFile.CopyToAsync(uploadimg);
+                    }
                 }
+            } else {
+                Animes animes1 = _context.Animes.Find(animes.IdAnime);
+
+                _context.Entry<Animes>(animes1).State = EntityState.Detached;  //Explicitly Detach the orphan tracked instance 
+
+
+                animes.Fotografia = animes1.Fotografia;
             }
+            
+
+            
             if (ModelState.IsValid) {
                 try {
                     _context.Update(animes);
