@@ -9,8 +9,8 @@ using MidgetBee.Data;
 
 namespace MidgetBee.Migrations {
     [DbContext(typeof(AnimeDB))]
-    [Migration("20210706190416_Remocao_Atrib_Categorias")]
-    partial class Remocao_Atrib_Categorias {
+    [Migration("20210714155956_VarsLetraGrande")]
+    partial class VarsLetraGrande {
         protected override void BuildTargetModel(ModelBuilder modelBuilder) {
 #pragma warning disable 612, 618
             modelBuilder
@@ -60,13 +60,13 @@ namespace MidgetBee.Migrations {
                 b.HasData(
                     new {
                         Id = "c",
-                        ConcurrencyStamp = "c522434a-b5ee-4b60-a490-96ba31bbbf59",
+                        ConcurrencyStamp = "13043e5f-b63f-46f1-86ce-1a3120cd9736",
                         Name = "Cliente",
                         NormalizedName = "CLIENTE"
                     },
                     new {
                         Id = "a",
-                        ConcurrencyStamp = "e6cf3c13-7df2-4762-a2fc-ca9311aad68e",
+                        ConcurrencyStamp = "ccb01af3-3aa8-4cca-a506-82fc14207fae",
                         Name = "Admin",
                         NormalizedName = "ADMIN"
                     });
@@ -258,7 +258,6 @@ namespace MidgetBee.Migrations {
                     .HasColumnType("nvarchar(max)");
 
                 b.Property<string>("Fotografia")
-                    .IsRequired()
                     .HasColumnType("nvarchar(max)");
 
                 b.Property<string>("Links")
@@ -764,14 +763,14 @@ namespace MidgetBee.Migrations {
                     .HasColumnType("int")
                     .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                b.Property<bool>("ContComment")
+                    .HasColumnType("bit");
+
                 b.Property<string>("Email")
                     .HasColumnType("nvarchar(max)");
 
                 b.Property<string>("UserNameID")
                     .HasColumnType("nvarchar(max)");
-
-                b.Property<bool>("contComment")
-                    .HasColumnType("bit");
 
                 b.HasKey("IdUsers");
 

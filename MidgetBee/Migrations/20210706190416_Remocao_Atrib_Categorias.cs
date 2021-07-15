@@ -1,11 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace MidgetBee.Migrations
-{
-    public partial class Remocao_Atrib_Categorias : Migration
-    {
-        protected override void Up(MigrationBuilder migrationBuilder)
-        {
+namespace MidgetBee.Migrations {
+    public partial class Remocao_Atrib_Categorias : Migration {
+        protected override void Up(MigrationBuilder migrationBuilder) {
             migrationBuilder.DropColumn(
                 name: "Categoria",
                 table: "Animes");
@@ -25,8 +22,7 @@ namespace MidgetBee.Migrations
                 value: "c522434a-b5ee-4b60-a490-96ba31bbbf59");
         }
 
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
+        protected override void Down(MigrationBuilder migrationBuilder) {
             migrationBuilder.AddColumn<string>(
                 name: "Categoria",
                 table: "Animes",

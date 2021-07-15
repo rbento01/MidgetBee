@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -14,8 +16,11 @@ namespace MidgetBee.Controllers.API {
     public class API : ControllerBase {
         private readonly AnimeDB _context;
 
-        public API(AnimeDB context) {
+        private readonly IWebHostEnvironment _caminho;
+
+        public API(AnimeDB context, IWebHostEnvironment caminho) {
             _context = context;
+            _caminho = caminho;
         }
 
         // GET: api/API
@@ -23,10 +28,15 @@ namespace MidgetBee.Controllers.API {
         public async Task<ActionResult<IEnumerable<AnimesAPIViewModel>>> GetAnimes() {
             var listaAnimes = await _context.Animes
                                  .Select(j => new AnimesAPIViewModel {
-                                     Fotografia = j.Fotografia,
                                      IdAnime = j.IdAnime,
                                      Nome = j.Nome,
-                                     Rating = j.Rating
+                                     QuantEpisodios = j.QuantEpisodios,
+                                     Autor = j.Autor,
+                                     Estudio = j.Estudio,
+                                     Data = j.Data,
+                                     Links = j.Links,
+                                     Rating = j.Rating,
+                                     Fotografia = j.Fotografia,
                                  }
                                  )
                                  .OrderBy(j => j.IdAnime)
@@ -72,11 +82,23 @@ namespace MidgetBee.Controllers.API {
         // POST: api/API
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Animes>> PostAnimes(Animes animes) {
-            _context.Animes.Add(animes);
-            await _context.SaveChangesAsync();
+        public async Task<ActionResult<Animes>> PostAnimes([FromForm] Animes anime, IFormFile UpFotografia)  {
+            anime.Fotografia = "";
+            string localizacao = _caminho.WebRootPath;
+            var nomeFoto = Path.Combine(localizacao, "fotos", UpFotografia.FileName);
+            var fotoUp = new FileStream(nomeFoto, FileMode.Create);
+            await UpFotografia.CopyToAsync(fotoUp);
+            anime.Fotografia = UpFotografia.FileName;
+            try {
+                _context.Animes.Add(anime);
+                await _context.SaveChangesAsync();
+            } catch (Exception ex) {
 
-            return CreatedAtAction("GetAnimes", new { id = animes.IdAnime }, animes);
+                throw;
+            }
+            
+
+            return CreatedAtAction("GetAnimes", new { id = anime.IdAnime }, anime);
         }
 
         // DELETE: api/API/5

@@ -75,7 +75,7 @@ namespace MidgetBee.Controllers {
                 }
             }
 
-            
+
 
             return View(anime);
         }
@@ -95,7 +95,7 @@ namespace MidgetBee.Controllers {
             // esta variável vai ter o valor do username do utilizador
             var utilizador = _context.Utilizadores.Where(u => u.UserNameID == _userManager.GetUserId(User)).FirstOrDefault();
 
-            if (utilizador.contComment == false) {
+            if (utilizador.ContComment == false) {
                 // objeto do tipo Reviews que vai possuir todos os atributos desse mesmo modelo
                 var comment = new Reviews {
                     AnimeFK = animeID,
@@ -110,7 +110,7 @@ namespace MidgetBee.Controllers {
                 _context.Reviews.Add(comment);
 
                 // sinaliza que o utilizador já colocou um comentário
-                utilizador.contComment = true;
+                utilizador.ContComment = true;
 
                 // dá update à database para aparecer true
                 _context.Utilizadores.Update(utilizador);
@@ -172,7 +172,7 @@ namespace MidgetBee.Controllers {
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("IdAnime,Nome,QuantEpisodios,Rating,Sinopse,Autor,Estudio,Data,Links,Fotografia,Categoria")] Animes animes, IFormFile imgFile, int[] CategoriaEscolhida) {
-            
+
             // avalia se o array com a lista de categorias escolhidas associadas ao anume está vazio ou não
             if (CategoriaEscolhida.Length == 0) {
                 //É gerada uma mensagem de erro
@@ -206,7 +206,7 @@ namespace MidgetBee.Controllers {
             if (imgext == ".jpg" || imgext == ".png") {
                 using (var uploadimg = new FileStream(saveimg, FileMode.Create)) {
                     await imgFile.CopyToAsync(uploadimg);
-                    
+
                 }
             }
 
@@ -289,13 +289,13 @@ namespace MidgetBee.Controllers {
 
                 animes.Fotografia = animes1.Fotografia;
             }
-            
 
-            
+
+
             if (ModelState.IsValid) {
                 try {
                     _context.Update(animes);
-                        await _context.SaveChangesAsync();
+                    await _context.SaveChangesAsync();
                 } catch (DbUpdateConcurrencyException) {
                     if (!AnimesExists(animes.IdAnime)) {
                         return NotFound();

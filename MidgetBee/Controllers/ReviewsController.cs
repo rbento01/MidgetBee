@@ -137,7 +137,7 @@ namespace MidgetBee.Controllers {
             var utilizador = _context.Utilizadores.Where(u => u.UserNameID == _userManager.GetUserId(User)).FirstOrDefault();
 
             // pode colocar outro comentário
-            utilizador.contComment = false;
+            utilizador.ContComment = false;
 
             // coloca na base de dados
             _context.Utilizadores.Update(utilizador);

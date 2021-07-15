@@ -1,11 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace MidgetBee.Migrations
-{
-    public partial class Animes_Categoria_Out : Migration
-    {
-        protected override void Up(MigrationBuilder migrationBuilder)
-        {
+namespace MidgetBee.Migrations {
+    public partial class Animes_Categoria_Out : Migration {
+        protected override void Up(MigrationBuilder migrationBuilder) {
             migrationBuilder.DropTable(
                 name: "AnimesCategoria");
 
@@ -24,19 +21,16 @@ namespace MidgetBee.Migrations
                 value: "f119f4f9-85be-4b77-966e-e2aee33ab32d");
         }
 
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
+        protected override void Down(MigrationBuilder migrationBuilder) {
             migrationBuilder.CreateTable(
                 name: "AnimesCategoria",
-                columns: table => new
-                {
+                columns: table => new {
                     idAnimesCategoria = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     AnimesFK = table.Column<int>(type: "int", nullable: false),
                     CategoriaFK = table.Column<int>(type: "int", nullable: false)
                 },
-                constraints: table =>
-                {
+                constraints: table => {
                     table.PrimaryKey("PK_AnimesCategoria", x => x.idAnimesCategoria);
                     table.ForeignKey(
                         name: "FK_AnimesCategoria_Animes_AnimesFK",
