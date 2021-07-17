@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MidgetBee.Data;
 
 namespace MidgetBee.Migrations
 {
     [DbContext(typeof(AnimeDB))]
-    partial class AnimeDBModelSnapshot : ModelSnapshot
+    [Migration("20210717030713_AlterTable")]
+    partial class AlterTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -64,14 +66,14 @@ namespace MidgetBee.Migrations
                         new
                         {
                             Id = "c",
-                            ConcurrencyStamp = "522dd41f-b1c7-46bf-b54e-ec79d675d8d4",
+                            ConcurrencyStamp = "b405a1b6-d47d-4c73-9f3b-9c031c61c2d6",
                             Name = "Cliente",
                             NormalizedName = "CLIENTE"
                         },
                         new
                         {
                             Id = "a",
-                            ConcurrencyStamp = "3bca4d4d-3297-41f4-9dcc-31a1a13f26d9",
+                            ConcurrencyStamp = "b872cecf-2590-43f9-abcf-77ee0fe32d3a",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -312,7 +314,7 @@ namespace MidgetBee.Migrations
                         {
                             IdAnime = 2,
                             Autor = "Masashi Kishimoto",
-                            Data = "15th of February, 2007 until 23th of March, 2017",
+                            Data = "15th of February, 2007 until 23 of March, 2017",
                             Estudio = "Studio Pierrot",
                             Fotografia = "Naruto_Shippuden.png",
                             Links = "https://beta.crunchyroll.com/pt-pt/series/GYQ4MW246/Naruto-Shippuden",
