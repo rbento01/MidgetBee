@@ -214,7 +214,7 @@ namespace MidgetBee.Controllers {
                 _context.Add(animes);
                 await _context.SaveChangesAsync();
 
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Details), new { id = animes.IdAnime });
 
             }
             return View(animes);
@@ -303,7 +303,7 @@ namespace MidgetBee.Controllers {
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Details), new { id = animes.IdAnime });
             }
             return View(animes);
         }
