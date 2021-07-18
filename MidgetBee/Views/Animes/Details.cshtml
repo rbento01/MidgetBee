@@ -44,7 +44,12 @@
     }
     <br />
     <div class="form-group" style="text-align:justify;">
-        <b>Synopsis: </b>@Html.DisplayFor(model => model.Sinopse)<br /><br />
+        @if ((User.IsInRole("Cliente") || User.IsInRole("Admin"))) {
+            <b>Synopsis: </b>@Html.DisplayFor(model => model.Sinopse)<br /><br />
+        } else {
+            <br /><br />
+            <b>Synopsis: </b>@Html.DisplayFor(model => model.Sinopse)<br /><br />
+        }
     </div>
     <div id="comentarios">
         @foreach (var item in Model.ListaDeReviews) {
