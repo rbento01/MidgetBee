@@ -30,6 +30,7 @@ namespace MidgetBee.Controllers.API {
                                  .Select(j => new AnimesAPIViewModel {
                                      IdAnime = j.IdAnime,
                                      Nome = j.Nome,
+                                     Sinopse = j.Sinopse,
                                      QuantEpisodios = j.QuantEpisodios,
                                      Autor = j.Autor,
                                      Estudio = j.Estudio,
