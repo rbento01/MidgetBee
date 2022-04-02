@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace MidgetBee.Models {
     public class Utilizadores {
 
         public Utilizadores() {
-            // inicializar a lista de Animes do User
-            ListaDeAnimes = new HashSet<Animes>();
-            // inicializar a lista de Episodios
-            ListaDeEpisodios = new HashSet<Episodios>();
+            // inicializar a lista de Reviews associados aos Utilizadores
             ListaDeReviews = new HashSet<Reviews>();
+            // inicializar a lista de Animes associados aos Utilizadores
+            ListaDeFavoritos = new HashSet<Favoritos>();
         }
         /// <summary>
         /// Possui o Identificador do User
@@ -23,23 +19,28 @@ namespace MidgetBee.Models {
         /// <summary>
         /// Possui o Email do User
         /// </summary>
-        [StringLength(50, ErrorMessage = "O {0} não pode ter mais de {1} caracteres.")]
-        [EmailAddress(ErrorMessage = "o {0} introduzido não é válido")]
+
+        [Display(Name = "Email")]
         public string Email { get; set; }
 
         /// <summary>
-        /// lista dos Animes associados ao User
+        /// Ligação entre os Utilizadores e a tabela de Autenticação
         /// </summary>
-        public ICollection<Animes> ListaDeAnimes { get; set; }
+        public string UserNameID { get; set; }
 
         /// <summary>
-        /// lista dos Animes associados ao Episodio
+        /// Vai possuir o valor de true caso o utilizador já tenho postado um comentário, false se ainda não colocou um comentário
         /// </summary>
-        public ICollection<Episodios> ListaDeEpisodios { get; set; }
+        public bool ContComment { get; set; }
 
         /// <summary>
-        /// Lista de Links associados aos Animes
+        /// Lista de Reviews associados aos Animes
         /// </summary>
         public ICollection<Reviews> ListaDeReviews { get; set; }
+
+        /// <summary>
+        /// Lista de Animes associados aos Utilizadores
+        /// </summary>
+        public ICollection<Favoritos> ListaDeFavoritos { get; set; }
     }
 }

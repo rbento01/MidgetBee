@@ -3,9 +3,10 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - MidgetBee</title>
+    <title>MidgetBee</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/styles.css" />
+    <link rel="stylesheet" href="~/css/AnimesView.css" />
 </head>
 <body>
     <header>
@@ -21,6 +22,19 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Animes" asp-action="Index">Animes</a>
                         </li>
+                        @if (User.Identity.IsAuthenticated || User.IsInRole("Admin") || User.IsInRole("Cliente")) {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Favoritos" asp-action="Index">Favoritos</a>
+                            </li>
+                        }
+                        @if (User.IsInRole("Admin")) {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Reviews" asp-action="Index">Reviews</a>
+                            </li>
+                        }
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Categorias" asp-action="Index">Categorias</a>
+                        </li>
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>
@@ -32,12 +46,6 @@
             @RenderBody()
         </main>
     </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2021 - MidgetBee - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

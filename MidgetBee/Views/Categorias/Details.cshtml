@@ -1,0 +1,43 @@
+﻿@model MidgetBee.Models.Categorias
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>@Model.NomeCategoria</h4>
+    
+        <div>
+            @if (User.IsInRole("Admin")) {
+            <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.IdCategoria">Edit</a>
+            }
+            <a class="btn btn-primary" asp-action="Index">Back to List</a>
+        </div>
+    <hr />
+</div>
+
+
+
+<div>
+    @foreach (var item in Model.ListaDeAnimes) {
+        @*cada anime vai ter o seu próprio div*@
+        <div class="Anime">
+            @*Caso o user clique o razor envia para a página dos Details do Anime em questão*@
+            <a asp-action="Details" asp-controller="Animes" asp-route-id="@item.IdAnime">
+                @*Coloca a foto do anime*@
+                <img class="fotoAnime" style="position:absolute;" src="~/fotos/@Html.DisplayFor(modelItem => item.Fotografia)" />
+
+                @*div para ajudar a fazer o hover e tornar a página mais apresentável*@
+                <div class="overlay">
+                    <div class="text">
+                        @*Coloca o texto no meio do div*@
+                        @Html.DisplayFor(modelItem => item.Nome)
+                    </div>
+                </div>
+            </a>
+        </div>
+    }
+
+</div>

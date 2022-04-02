@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace MidgetBee.Models {
     /// <summary>
@@ -28,7 +25,7 @@ namespace MidgetBee.Models {
         /// Possui a Rating do Anime
         /// </summary>
         [Required]
-        public double Rating { get; set; }
+        public int Rating { get; set; }
 
         /// <summary>
         /// Possui a Data que foi feita a Review

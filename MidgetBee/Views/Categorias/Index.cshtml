@@ -1,0 +1,33 @@
+﻿@model IEnumerable<MidgetBee.Models.Categorias>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NomeCategoria)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.IdCategoria">@Html.DisplayFor(modelItem => item.NomeCategoria)</a>
+                </td>
+                <td>
+                    @if (User.IsInRole("Admin")) {
+                        <a asp-action="Delete" asp-route-id="@item.IdCategoria">Delete</a>
+                    }
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

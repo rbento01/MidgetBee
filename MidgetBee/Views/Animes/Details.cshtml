@@ -4,33 +4,94 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h1>@Html.DisplayFor(model => model.Nome)</h1>
 
 <div>
-    <h4>Filmes</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Nome)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Nome)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.QuantEpisodios)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.QuantEpisodios)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Sinopse)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Sinopse)
-        </dd>
-    </dl>
+    <div style="float:left; margin-right:20px;" class="form-group">
+        <img src="~/fotos/@Html.DisplayFor(model => model.Fotografia)" width="200" alt="Fotografia do @Html.DisplayFor(model => model.Nome)" title="@Html.DisplayFor(model => model.Nome)" />
+    </div>
+    <div style="line-height:2;" class="form-group">
+        <b>Name: </b> @Html.DisplayFor(model => model.Nome)
+        @if (ViewBag.Favorito == false && (User.IsInRole("Cliente") || User.IsInRole("Admin"))) {
+            <img style="width:25px; height:25px" src="~/fotos/Heart_Empty.png" />
+        } else if (ViewBag.Favorito == true && (User.IsInRole("Cliente") || User.IsInRole("Admin"))) {
+            <img style="width:25px; height:25px" src="~/fotos/Heart_Full.png" />
+        }
+        <br />
+        <b>Episodes: </b> @Html.DisplayFor(model => model.QuantEpisodios)<br />
+        <b>Rating: </b> @Html.DisplayFor(model => model.Rating)<br />
+        <b>Author: </b> @Html.DisplayFor(model => model.Autor)<br />
+        <b>Studio: </b> @Html.DisplayFor(model => model.Estudio)<br />
+        <b>Aired: </b> @Html.DisplayFor(model => model.Data)<br />
+        <a style="font-weight:bold" href="@Html.DisplayFor(model => model.Links)"><b> Website</b></a><br />
+        <b>Categories: </b> 
+            @foreach (var item in Model.ListaDeCategorias) {
+                <a asp-controller="Categorias" asp-action="Details" asp-route-id="@item.IdCategoria" style="margin-right:5px;">@item.NomeCategoria</a>
+            }
+    </div>
+    @if ((User.IsInRole("Cliente") || User.IsInRole("Admin"))) {
+        <div class="form-group">
+            <form asp-action="AddFavoritos">
+                <input type="hidden" name="animeID" value="@Model.IdAnime" />
+                @if (ViewBag.Favorito == false) {
+                    <input type="submit" value="Add to Favorites" class="btn btn-primary" />
+                } else {
+                    <input type="submit" value="Remove from Favorites" class="btn btn-primary" />
+                }
+
+            </form>
+        </div>
+    }
+    <br />
+    <div class="form-group" style="text-align:justify;">
+        @if ((User.IsInRole("Cliente") || User.IsInRole("Admin"))) {
+            <b>Synopsis: </b>@Html.DisplayFor(model => model.Sinopse)<br /><br />
+        } else {
+            <br /><br />
+            <b>Synopsis: </b>@Html.DisplayFor(model => model.Sinopse)<br /><br />
+        }
+    </div>
+    <div id="comentarios">
+        @foreach (var item in Model.ListaDeReviews) {
+            @if (@item.Visibilidade == true) {
+                <div style="background-color:lightblue; border:3px solid black; padding:2px 10px 2px 5px">
+                    <span><b>User:</b> @item.Utilizador.Email</span>
+                    <span style="float:right; "> <b>Rating:</b> @item.Rating</span>
+                    @if ((User.IsInRole("Cliente") || User.IsInRole("Admin")) && item.Utilizador.Email == User.Identity.Name) {
+                        <button class="btn btn-primary" style="height: 39px; margin-left: 10px;" onclick="location.href = '@Url.Action("Edit", "Reviews", new { id = item.IdReview })'">Editar</button>
+                        <button class="btn btn-danger" style="height: 39px; margin-left: 10px;" onclick="location.href = '@Url.Action("Delete", "Reviews", new { id = item.IdReview })'">Apagar</button>
+                    }
+                    <br />
+                    <span><b>Comentário:</b> @Html.Raw(item.Comentario)</span>
+                </div>
+                <br />
+            }
+
+        }
+    </div>
+    @if (User.Identity.IsAuthenticated) {
+        <div>
+            @*  se não adicionarmos o atributo
+                         enctype="multipart/form-data"
+                não conseguimos enviar os ficheiros para o servidor *@
+            <form asp-action="CreateComentario">
+                <input type="hidden" name="animeID" value="@Model.IdAnime" />
+                <span><b>Rating: </b></span><input required type="number" name="rating" min="1" max="10" text-align:center" maxlength="2" placeholder="1 a 10"><br /><br />
+                <span><b>Comentário: </b></span><br />
+
+                <textarea required name="comentario" style="resize:none; width:1100px; height:100px;"></textarea><br />
+                <input type="submit" value="Add Comment" class="btn btn-primary" />
+            </form>
+        </div>
+    }
+
+
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.IdAnime">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <br />
+    <a class="btn btn-primary" asp-action="Index">Back to List</a>
+    @if (User.IsInRole("Admin")) {
+        <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.IdAnime">Edit</a>
+        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@Model.IdAnime">Delete</a>
+    }
 </div>

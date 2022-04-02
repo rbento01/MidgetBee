@@ -1,23 +1,16 @@
 ﻿@model MidgetBee.Models.Animes
 
 @{
-    Layout = null;
+    ViewData["Title"] = "Create";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Create</title>
-</head>
-<body>
+<h1>Create</h1>
 
 <h4>Animes</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="Create" enctype="multipart/form-data" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Nome" class="control-label"></label>
@@ -31,7 +24,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Rating" class="control-label"></label>
-                <input asp-for="Rating" class="form-control" />
+                <input type="number" min="1" max="10" asp-for="Rating" class="form-control" />
                 <span asp-validation-for="Rating" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -61,13 +54,14 @@
             </div>
             <div class="form-group">
                 <label asp-for="Fotografia" class="control-label"></label>
-                <input asp-for="Fotografia" class="form-control" />
+                <input type="file" name="imgFile" class="form-control" />
                 <span asp-validation-for="Fotografia" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Categoria" class="control-label"></label>
-                <input asp-for="Categoria" class="form-control" />
-                <span asp-validation-for="Categoria" class="text-danger"></span>
+                <label class="control-label">Categorias</label>
+                @foreach (Categorias item in ViewBag.ListaDeCategorias) {
+            <br /> <input type="checkbox" value="@item.IdCategoria" name="CategoriaEscolhida" /> @item.NomeCategoria            
+                }
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
@@ -83,5 +77,3 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
-</body>
-</html>

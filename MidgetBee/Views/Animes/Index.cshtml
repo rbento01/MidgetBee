@@ -4,84 +4,36 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+@if (User.IsInRole("Admin")) {
+    <p>
+        <a class="btn btn-primary" style="margin-left: 50px;" asp-action="Create">Create New</a>
+    </p>
+}
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Fotografia)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Nome)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Autor)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Estudio)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Rating)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Data)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Links)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Categoria)
-            </th>
-            <th>
-                Propriedades
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model) {
-            <tr>
-                <td>
-                    <img src="~/fotos/@Html.DisplayFor(modelItem => item.Fotografia)"
-                         width="150"
-                         alt="Fotografia do @Html.DisplayFor(modelItem => item.Nome)"
-                         title="@Html.DisplayFor(modelItem => item.Nome)" />
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Nome)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Autor)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Estudio)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Rating)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Data)
-                </td>
-                <td>
-                    <a href="@Html.DisplayFor(modelItem => item.Links)">
-                        <img src="~/fotos/play.jpg" width="50" />
-                    </a>
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Categoria)
-                </td>
-                <td>
-                    <text>
-                        @*esta anotação <text> marca o conteúdo como 'texto' dessa forma, o Razor irá ignorar o seu conteúdo*@
-                        <a asp-action="Edit" asp-route-id="@item.IdAnime">Editar</a> |
-                        <a asp-action="Details" asp-route-id="@item.IdAnime">Detalhes</a> |
-                        <a asp-action="Delete" asp-route-id="@item.IdAnime">Apagar</a>
-                    </text>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+<head style="background-color: lightgrey;">
+    <link rel="stylesheet" href="~/css/AnimesView.css" />
+</head>
+
+<body style="background-color: lightgrey;">
+    @*Para cada anime vai entrar dentro do for*@
+    @foreach (var item in Model) {
+        @*cada anime vai ter o seu próprio div*@
+        <div class="Anime">
+            @*Caso o user clique o razor envia para a página dos Details do Anime em questão*@
+            <a asp-action="Details" asp-route-id="@item.IdAnime">
+                @*Coloca a foto do anime*@
+                <img class="fotoAnime" src="~/fotos/@Html.DisplayFor(modelItem => item.Fotografia)" />
+
+
+
+                @*div para ajudar a fazer o hover e tornar a página mais apresentável*@
+                <div class="overlay">
+                    <div class="text">
+                        @*Coloca o texto no meio do div*@
+                        @Html.DisplayFor(modelItem => item.Nome)
+                    </div>
+                </div>
+            </a>
+        </div>
+    }
+</body>
